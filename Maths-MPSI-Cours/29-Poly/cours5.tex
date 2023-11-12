@@ -1,0 +1,168 @@
+\documentclass[book]{magnoliaold}
+
+\magtex{tex_driver={pdftex},
+        tex_packages={float,caption,titling,epigraph,minitoc,slashbox,tabularx,cancel,pgfplots,xypic,nicefrac},
+        tex_pstricks={pstricks,pst-plot}}
+\magfiche{document_nom={Cours de Sup},
+          auteur_nom={François Fayard},
+          auteur_mail={fayard.prof@gmail.com}}
+\magcours{cours_matiere={maths},
+          cours_niveau={mpsi},
+          cours_chapitre_numero={11},
+          cours_chapitre={Dérivation}}
+% \magmisenpage{misenpage_presentation={tikzvelvia},
+%           misenpage_format={presentation},
+%           misenpage_nbcolonnes={1},
+%           misenpage_preuve={non},
+%           misenpage_sol={non}}
+\magmisenpage{}
+\maglieudiff{}
+\magprocess
+
+\usepackage[scale=3]{ccicons}
+\title{{\Huge\bf Cours de Mathématiques}\\\vspace{1cm}
+%       \textbf{\Huge 2022--2023}\\
+       \textbf{\Huge Maths Sup -- Tome V}\\\vspace{1cm}
+      %  \textsc{L. Bouyge-Bono, F. Fayard, V. Lambert}\\\vspace{1cm}
+       \textsc{F. Fayard}\\\vspace{1cm}
+       \includegraphics[width=8cm]{../../Commun/Images/lazos-bde-2024.png}\\%\vspace{1cm}
+       \includegraphics[width=8cm]{../../Commun/Images/lazos.png}}
+% \author{{\sc François Fayard}, {\sc Victor Lambert}}
+% \date{3 Août 2020 -- 1a20aa}
+
+% \pretitle{%
+%   \begin{center}
+%   \includegraphics[width=12cm]{/Users/fayard/Desktop/lazos.png}\\[\bigskipamount]
+% }
+% \posttitle{\end{center}}
+
+\mtcsettitle{minitoc}{}
+\mtcsettitle{secttoc}{Table des matières}
+\mtcsettitle{parttoc}{Table des matières}
+
+\usetikzlibrary{positioning}
+% \lstset{%
+%   frame            = tb,    % draw frame at top and bottom of code block
+%   tabsize          = 1,     % tab space width
+%   numbers          = none,  % display line numbers on the left
+%   framesep         = 3pt,   % expand outward
+%   framerule        = 0.4pt, % expand outward 
+%   commentstyle     = \color{green},      % comment color
+%   keywordstyle     = \color{blue},       % keyword color
+%   stringstyle      = \color{blue},    % string color
+%   backgroundcolor  = \color{colorLazoBlue1Light}, % backgroundcolor color
+%   showstringspaces = false,              % do not mark spaces in strings
+%   basicstyle       = \ttfamily,
+%   breaklines       = true
+% }
+
+\input{vc.tex}
+
+\begin{document}
+
+\maketitle
+
+La version de ce document est la \textsc{\GITAbrHash}.\\
+
+Merci à tous les élèves des lycées Janson de Sailly, du Parc et des Lazaristes pour leurs remarques et corrections. Je remercie
+particulièrement \nom{Samuel Auroy}, \nom{Antonin Barbier}, \nom{Amin Belfkira}, \nom{Martin Bot}, \nom{Alexandre Brousse}, \nom{Élodie Brun}, \nom{Damien Callendrier}, \nom{Lauren Calvosa}, \nom{Sylvain Crosnier}, \nom{Enguerrand De Jaegere}, \nom{Thibaud De Valicourt}, \nom{Victor Déru}, \nom{Raphaël Des Boscs}, \nom{Grégoire Dhimoïla}, \nom{Léo Duhamel-Callot}, \nom{Sacha Evrard}, \nom{Axel Faou}, \nom{Titouan Francheteau}, \nom{Hélène Ghaleb}, \nom{Cédric Holocher},
+\nom{Maxime Joubert}, \nom{Maxime Lombard}, \nom{Mira Maamri}, \nom{Gauthier Malandrin}, \nom{Pierre-Antoine Nguyen},
+\nom{Hilaire Oudinot}, \nom{Eliott Pradeleix}, \nom{Yann-Ellie Ravon}, \nom{Sixtine Reynaud}, \nom{Vivien Thienot},
+\nom{Carole Vacherand}, \nom{Camille Vialet}, \nom{Paul Vilars} et \nom{Antonin Villepontoux}.\\
+
+Je tiens enfin à remercier mes anciens professeurs et
+collègues qui ont eu une influence sur la rédaction de ce document~: \nom{Walter Appel}, \nom{Bruno Arsac}, \nom{Jean-Pierre Barani}, \nom{Vincent Bayle}, \nom{Christophe Bertault}, \nom{Laurence Bouyge}, \nom{Gilles Chaffard}, \nom{Alain Chillès}, \nom{Denis Choimet}, \nom{Vincent Clapiès}, \nom{Gérard Esposito}, \nom{Stéphane Gonnord}, \nom{Victor Lambert}, %
+%\nom{Pierre-Louis Lions},
+\nom{Frédéric Morlot}, \nom{Franz Ridde}, \nom{Emmanuel Roblet} et \nom{Alain Troesch}.\\
+%, \nom{Cédric Villani}.\\
+\vfill
+
+
+\begin{center}
+  \ccbysa\\
+  \vspace{2ex}
+  This work is licensed under a Creative Commons\\
+  Attribution-ShareAlike 4.0 International License.\\
+  \url{https://creativecommons.org/licenses/by-sa/4.0/legalcode.fr}\\
+  \vspace{2ex}
+  La dernière version de ce document ainsi que\\
+  les sources \LaTeX{} sont disponibles à l'adresse\\
+  \url{https://github.com/FayardProf/Maths-MPSI-MP2I}
+  \end{center}
+  \vspace{2ex}
+  \begin{center}
+  \textbf{Vous êtes autorisés à~:}
+  \end{center}
+  \vspace{2ex}
+  \begin{itemize}
+  \item \textbf{Partager}~: copier, distribuer et communiquer le matériel par tous les moyens et sous tous formats.
+  \item \textbf{Adapter}~: remixer, transformer et créer à partir du matériel
+  pour toute utilisation, y compris commerciale.
+  \end{itemize}
+  \vspace{2ex}
+  \begin{center}
+  \textbf{Selon les conditions suivantes~:}
+  \end{center}
+  \vspace{2ex}
+  \begin{itemize}
+    \item \textbf{Attribution}~: Vous devez créditer l'œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l'œuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'offrant vous soutient ou soutient la façon dont vous avez utilisé son œuvre.
+    \item \textbf{Partage dans les mêmes conditions}~: Dans le cas où vous effectuez un remix, que vous transformez, ou créez à partir du matériel composant l'œuvre originale, vous devez diffuser l'œuvre modifiée dans les même conditions, c'est à dire avec la même licence avec laquelle l'œuvre originale a été diffusée.
+    \item \textbf{Pas de restrictions complémentaires}~: Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'œuvre dans les conditions décrites par la licence.
+    \end{itemize}
+
+\setcounter{chapter}{21}
+
+\tableofcontents
+
+% \part{Sup}
+
+\chapter{Fractions rationnelles}
+\setcounter{numeroexercicecours}{1}
+\input{cours-fractions_rationnelles}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-fractions_rationnelles}
+
+\chapter{Séries}
+\setcounter{numeroexercicecours}{1}
+\input{cours-series}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-series}
+
+\chapter{Espaces euclidiens}
+\setcounter{numeroexercicecours}{1}
+\input{cours-euclidiens}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-euclidiens}
+
+\chapter{Espérance, variance}
+\setcounter{numeroexercicecours}{1}
+\input{cours-esperance_variance}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-esperance_variance}
+
+\chapter{Déterminants}
+\setcounter{numeroexercicecours}{1}
+\input{cours-determinants}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-determinants}
+
+\chapter{Fonctions de deux variables}
+\setcounter{numeroexercicecours}{1}
+\input{cours-deux_variables}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-deux_variables}
+
+\chapter{Familles sommables}
+\setcounter{numeroexercicecours}{1}
+\input{cours-famille_sommable}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-famille_sommable}
+
+\end{document}

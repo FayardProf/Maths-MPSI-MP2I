@@ -1,0 +1,215 @@
+\documentclass{magnolia}
+
+\magtex{tex_driver={pdftex}}
+\magfiche{document_nom={Valeur, type, variable},
+					auteur_nom={François Fayard},
+					auteur_mail={francois.fayard@auxlazaristeslasalle.fr}}
+\magexos{exos_matiere={maths},
+         exos_niveau={mpsi},
+         exos_chapitre_numero={1},
+         exos_theme={Valeur, type, variable}}
+\magmisenpage{}
+\maglieudiff{}
+\magprocess
+
+\begin{document}
+
+%BEGIN_BOOK
+\magsection{Valeur, type}
+
+\magsubsection{Nombre entier}
+
+\exercice{nom={Évaluer une expression}}
+Déterminer la valeur et le type de chacune des expressions suivantes~:
+\begin{pythoncode}
+In [1]: 5 * 2 + 1 ** 2
+In [2]: 5 * (2 + 1) ** 2
+In [3]: -16 // 5
+In [4]: 8 / 2
+\end{pythoncode}
+
+\exercice{nom={Les oeufs}}
+On suppose que la variable \verb_n_ contient le nombre d'oeufs dont on dispose et on souhaite
+calculer le nombre \verb_b_ de boites de 6 oeufs nécessaires à leur transport.
+\begin{questions}
+\question Pour quelles valeurs de $n$ l'expression \verb_n // 6_ donne-t-elle la bonne
+  réponse~?
+\question Trouver une expression donnant la bonne réponse.
+\end{questions}
+\begin{sol}
+\begin{questions}
+\question c'est la bonne réponse si $n$ est multiple de 6.
+\question \verb_(n + 5) // 6_.
+\end{questions}
+\end{sol}
+
+\magsubsection{Nombre flottant}
+
+% \exercice{nom={Entiers et flottants}}
+% Évaluer les expressions suivantes en déterminant celles qui renvoient des résultats de
+% type \verb!int!.
+% \begin{pythoncode}
+% In [1]: 4 + 2
+% In [2]: 1 - 6 * 7
+% In [3]: 18 // 7
+% In [4]: 42 / 6
+% In [5]: 22 / (16 - 2 * 8)
+% \end{pythoncode}
+
+\exercice{nom={Évaluer une expression}}
+Déterminer la valeur et le type de chacune des expressions suivantes, d'abord sans utiliser
+Python, puis en l'utilisant.
+\begin{pythoncode}
+In [1]: 2 ** 3.0 + 4
+In [2]: int(8.6) + 2
+In [3]: float(2) ** 3
+\end{pythoncode}
+
+% \exercice{nom={Conversion}}
+% \begin{questions}
+% \question Les expressions suivantes renvoient-elles la même valeur~?
+% \begin{pythoncode}
+% In [1]: 8.5 / 2.1
+% In [2]: int(8.5) / int(2.1)
+% In [3]: int(8.5 / 2.1)
+% \end{pythoncode}
+% \question Que dire des expressions suivantes~?
+% \begin{pythoncode}
+% In [1]: float(8 * 2)
+% In [2]: 8 * 2
+% In [3]: 8. * 2.
+% \end{pythoncode}
+% \end{questions}
+
+% \exercice{nom={Fonctions usuelles}}
+% Comment calculer les nombres suivants~?
+% \[\e^2\qsep \sqrt{13}\qsep \cos\frac{\pi}{5}\qsep \e^{\sqrt{5}},\]
+% \[\ln 2\qsep \ln 10\qsep \log_{2} 10\qsep \tan\frac{\pi}{2}.\]
+
+\magsubsection{Chaine de caractères}
+
+\magsubsection{Booléen}
+
+% \exercice{nom={Évaluer une expression}}
+% Déterminer la valeur et le type de chacune des expressions suivantes, d'abord sans utiliser
+% Python, puis en l'utilisant.
+% \begin{pythoncode}
+% In [1]: 2 == 1 + 1
+% In [2]: 2 == 1 + 1 + 1
+% In [3]: (2 == 1 + 1 + 1) and (2 == 1 + 1)
+% In [4]: 2 == 1 + 1 + 1 or 2 == 1 + 1
+% In [5]: 1 == 0 // 0
+% In [6]: (not (0 == 0)) and (1 == 0 // 0)
+% In [7]: 2 >= 3 or 2 ** 4 * 5 ** 2 // 20 == 20
+% In [8]: True or 4 > 3 and 3 > 4
+% In [9]: not False and False
+% \end{pythoncode}
+
+\exercice{nom={Année bissextile}}
+Une année est bissextile dans les deux cas suivants.
+\begin{itemize}
+\item Si l'année est divisible par 4 et non divisible par 100.
+\item Si l'année est divisible par 400.
+\end{itemize}
+On suppose que la variable $n$ contient l'année qui nous intéresse. Donner une expression
+Python qui s'évalue en \verb_True_ si l'année est bissextile et en \verb_False_
+sinon. 
+
+\magsubsection{Tuple}
+
+\magsection{Programmation impérative}
+
+\magsubsection{Variable}
+
+\magsubsection{État du système}
+
+% \exercice{nom={Changement d'état}}
+% \begin{questions}
+% \question Quelle est la valeur affichée par l'interprète après la séquence d'instructions
+%   suivante~?
+% \begin{pythoncode}
+% a = 3
+% a = 4
+% a = a + 2
+% a
+% \end{pythoncode}
+% \question Quelle est la valeur affichée par l'interprète après la séquence d'instructions
+%   suivante~?
+% \begin{pythoncode}
+% a = 2
+% b = a * a
+% b = a * b
+% b = b * b
+% b
+% \end{pythoncode}
+% \end{questions}
+
+\exercice{nom={Suites d'affectations}}
+% \begin{questions}
+% \question Quelles sont les valeurs de \verb!a! et \verb!b! après les instructions suivantes~?
+% \begin{pythoncode}
+% a = 7
+% b = a
+% a = 9
+% \end{pythoncode}
+% \question Quelles sont les valeurs de \verb!x!, \verb!y!, \verb!z! après les instructions suivantes~?
+% \begin{pythoncode}
+% x = 23
+% y = 18
+% z = x 
+% x = y 
+% y = z 
+% \end{pythoncode}
+% \question
+Quelles sont les valeurs de \verb!x!, \verb!y! après les instructions suivantes~?
+\begin{pythoncode}
+In [1]: x = 23
+In [2]: y = 18
+In [3]: x = x + y 
+In [4]: y = x - y 
+In [5]: x = x - y 
+\end{pythoncode}
+% \end{questions}
+
+\exercice{nom={Quésako}}
+On suppose que les variables \verb_a_ et \verb_b_ contiennent initialement les valeurs
+$a_0$ et $b_0$. Quelles sont les valeurs contenues par \verb_a_ et \verb_b_ après les
+instructions suivantes~?
+\begin{pythoncode}
+In [1]: a = a + b
+In [2]: b = a - b
+In [3]: a = a - b
+\end{pythoncode}
+
+% \exercice{nom={Échange}}
+% S'il n'était pas possible d'effectuer plusieurs affectations simultanément, comment
+% procéderiez-vous pour échanger le contenu de deux variables \verb_a_ et \verb_b_.
+
+\magsubsection{Entrée, sortie}
+
+\exercice{nom={Entrée, sortie}}
+Donner l'état du shell après chacune des commandes suivantes.
+\begin{pythoncode}
+In [1]: 1 + 2
+In [2]: print(1 + 2)
+In [3]: print(print(1 + 2))
+In [4]: print(1) + 2
+In [5]: print(1) + print(2)
+\end{pythoncode}
+
+
+% \magsubsection{Logo}
+
+% \exercice{nom={Noeud papillon}}
+
+% Tracez en \textsc{logo} le noeud papillon suivant. La hauteur du noeud papillon est de
+% 100 et sa largeur est de 200. On utilisera la fonction \verb_atan(x)_ du module
+% \verb_math_ qui calcule la mesure $\theta\in\intero{-\pi/2}{\pi/2}$ en radian de
+% l'unique angle dont la tangente vaut $x$.
+% \begin{center}
+% \includegraphics[width=0.3\textwidth]{../../Commun/Images/python-exos-val-1.pdf}
+% \end{center}
+
+%END_BOOK
+
+\end{document}

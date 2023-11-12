@@ -1,0 +1,732 @@
+A[modifier | modifier le code]
+
+A+
+A++
+A# .NET
+A# (Axiom)
+A-0 System
+ABAL/ABAL++
+ABAP
+ABC
+ABC ALGOL
+ABCL/1
+ABCL/c+
+ABCL/R
+ABCL/R2
+Abel
+ABLE
+ABSET
+ABSYS
+Abundance
+ACC
+Accent
+ActForex
+ActionScript
+Ace DASL
+ACT-III
+Ada
+Adenine
+Afnix
+Agora
+AIS Balise
+Aikido
+Alef
+ALF
+ALGOL
+Alice
+Ambi
+Amiga E
+AMOS
+AMPLE
+Anubis
+APDL
+APL
+AppleScript
+Arc
+Ariberion
+ASP.NET
+ATS
+AutoHotkey
+AutoIt
+Averest
+awk
+axe parser
+Axum
+Ateji PX
+B[modifier | modifier le code]
+
+B
+Bash
+BASIC
+BATCH
+bc
+BCPL
+BeanShell
+Befunge
+Bennu
+Bertrand
+BETA
+Bigwig
+Bistro
+BitC
+BLISS
+Blue
+Bon
+Boo
+Boomerang
+BPEL
+Brainfuck
+BUGSYS
+BuildProfessional
+
+C[modifier | modifier le code]
+
+C
+C--
+C++
+C#
+C/AL
+Caché ObjectScript
+Caml
+Cat
+Cayenne
+Cecil
+Cel
+Cesil
+Ceylon
+CFML
+Cg
+Ch interpreter (C/C++ interpreter)
+Chapel
+CHAIN
+Charity
+Chef
+CHILL
+CHIP-8
+chomski
+CHR
+Chrome
+ChucK
+CICS
+CIL
+Cilk
+CL (Honeywell)
+Claire
+Clarion
+Clean
+Clipper
+CLIST
+Clojure
+CLU
+CMS-2
+COBOL
+CobolScript
+Cobra
+CODE
+CoffeeScript
+Cola
+ColdC
+ColdFusion
+COMAL
+Common Lisp (parfois abrégé en CL)
+COMPASS
+Component Pascal
+COMIT
+Converge
+Cool
+Coq
+Coral 66
+Corn
+CorVision
+COWSEL
+CPL
+csh
+CSP
+Csound
+Curl
+Curry
+Cyclone
+
+D[modifier | modifier le code]
+
+D
+Dao
+DASL - Distributed Application Specification Language
+DASL - Datapoint's Advanced Systems Language
+DarkBASIC
+DarkBASIC Professional
+Dart
+DataFlex
+Datalog
+dBase
+dc
+DCL
+Deesel (précédemment G)
+Delphi
+Dialect
+DinkC
+Dialog Manager
+DIBOL
+Duke C
+Dylan
+Dynace
+D++ (précédemment J#)
+E[modifier | modifier le code]
+
+E
+Ease
+EASY
+Easy PL/I
+EASYTRIEVE PLUS
+eC (Ecere C)
+ECMAScript
+eDeveloper
+Edinburgh IMP
+EGL
+Eiffel
+Einstein
+Elan
+elastiC
+Elf
+Emacs Lisp
+Englesi
+Epigram
+Erlang
+Escapade
+Escher
+Esterel
+Etoys
+Euclid
+Euler
+Euphoria
+CMS EXEC
+EXEC 2
+
+F[modifier | modifier le code]
+
+F
+F#
+Factor
+Falcon
+Fan
+Fancy
+False
+Felix
+Ferite
+FFP
+Fjölnir
+FL
+Flavors
+FLOW-MATIC
+Fly
+FOCAL
+FOCUS
+FOIL
+FORMAC
+@Formula
+Forth
+Fortran
+Fortress
+FoxPro 2
+FP
+Franz Lisp
+Frink
+F-Script
+FSProg
+Fuxi
+
+G[modifier | modifier le code]
+
+Gambas
+GAMS
+GAP
+G-code
+GDL
+Gibiane
+GFA BASIC
+GJ
+GLSL
+GM
+GML
+Go
+Go!
+GOAL
+Gödel
+Godiva
+Goo
+GOTO++
+GOTRAN
+GPSS
+GraphTalk
+GRASS
+Grammer
+Green
+Groovy
+H[modifier | modifier le code]
+
+HAL/S
+IBM HAScript
+Haskell
+HaXe
+High Level Assembly
+HLSL
+Hop
+Hope
+Hugo
+Hume
+HyperTalk
+
+I[modifier | modifier le code]
+
+IBM Basic Assembly Language (BAL)
+IBM Informix-4GL
+IBM RPG
+ICI
+Icon
+Id
+IDL (Interactive Data Language)
+IMP
+Inform
+INTERCAL
+Io
+Ioke
+IPL
+IPTSCRAE
+ISPF
+ISWIM
+
+J[modifier | modifier le code]
+
+J
+J#
+J++
+JADE
+Jako
+JAL
+Janus
+JASS
+Java
+JavaScript
+JCL
+JEAN
+Join Java
+JOSS
+Joule
+JOVIAL
+Joy
+JScript
+JSP
+Jackson Structured Programming
+
+K[modifier | modifier le code]
+
+K
+Kaleidoscope
+Karel
+Karel++
+Kaya
+KEE
+Kiev
+KIF
+Kite
+Kogut
+Kotlin
+KRC
+KRYPTON
+ksh
+KUKA
+
+L[modifier | modifier le code]
+
+L
+L# .NET
+LabVIEW
+Ladder ou LD pour Ladder Diagram
+Lagoona
+LANSA
+Lasso
+Lava
+Leadwerks Script
+Leda
+Legoscript
+Lexico
+Limbo
+Limnor
+LINC
+Lingo
+Linoleum
+Linotte
+LIS
+LISA
+Lisaac
+Lisp
+Lithe
+Little b
+Logo
+LOLCODE
+LPC
+LSE
+LSL
+Lua
+Lucid
+Lush
+Lustre
+LYaPAS
+Lynx
+LZX
+
+M[modifier | modifier le code]
+
+M
+M4
+Macsyma
+MAD
+Magik
+Magma
+Malbolge
+MapBasic
+Maple
+MAPPER (Unisys/Sperry) désormais composant de BIS
+MARK-IV (Sterling/Informatics) aujourd'hui VISION:BUILDER de CA
+Mary
+MASM Microsoft Assembly x86
+Mathematica
+MATLAB
+Maxima
+MaxScript langage interne de 3D Studio Max
+Maya (MEL)
+MDL
+Mercury
+Mesa
+MetaL
+Microcode
+MicroScript
+MIIS
+MillScript
+MIMIC
+min
+Mindscript
+Miranda
+MivaScript
+ML
+Moby
+Model 204
+Modula
+Modula-2
+Modula-3
+Mondrian
+MOO
+Mortran
+Moto
+Mouse
+MPD
+MSIL (ancienne appellation de CIL)
+MSL
+MSX BASIC
+MUMPS
+Mythryl
+N[modifier | modifier le code]
+
+Napier88
+NATURAL
+NBC
+NEAT chipset
+Neko
+Nemerle
+Neonitisme
+NESL
+Net.Data
+NetLogo
+NewLISP
+NEWP
+NewtonScript
+NGL
+Nial
+Nice
+Nickle
+Nil
+Nit
+NPL
+NQC
+Nu
+NXC
+NXT-G
+Nyquist
+
+O[modifier | modifier le code]
+
+o:XML
+Oak
+Oberon
+Object Lisp
+ObjectLOGO
+Objective-C
+Objective-J
+Obliq
+Obol
+OCaml
+occam
+occam-p
+Octave
+OmniMark
+Onyx
+ooc
+Opa
+Opal
+OpenEdge ABL
+OPL
+OPS5
+Ork
+ORCA/Modula-2
+Orwell
+Oxygene
+Oz
+OptimJ
+
+P[modifier | modifier le code]
+
+Panoramic
+PARI/GP
+Pascal - ISO 71851 et ISO 102062
+Pascal Objet
+Pawn
+PCASTL
+PCF
+PEARL
+Perl
+Phantom
+PHP
+Phrogram (anciennement KPL pour Kid's Programming Language)
+Pico
+Pict
+Piet
+Pike
+PIKT
+PILOT
+Pizza
+PL-11
+PL/0
+PL/B
+PL/C
+PL/I
+PL/M
+PL/P
+PL/SQL
+PL360
+PLANC
+Plankalkül
+PLEX
+PLEXIL
+Pliant
+POP-11
+Poplog
+Portal
+PostScript
+PortablE
+Powerbuilder
+Powerhouse
+PPL
+Processing
+Prograph
+PROIV
+Prolog
+Promela
+PROTEL
+Proteus
+ProvideX
+Pure
+Purebasic
+Python
+Q[modifier | modifier le code]
+
+Q
+Qi
+QtScript
+QBasic
+QuakeC
+QPL
+
+R[modifier | modifier le code]
+
+R
+R++
+Rapira
+Ratfiv
+Ratfor
+RBScript
+rc
+REBOL
+Redcode
+REFAL
+Reia
+Revolution
+rex
+REXX
+Rlab
+ROOP
+RPG
+RPL
+RSL
+Ruby
+
+S[modifier | modifier le code]
+
+S
+S2
+S3
+S-Lang
+S-PLUS
+SA-C
+SAC
+Safe C
+SAIL
+SALSA
+SAM76
+SAS
+SASL
+Sather
+Sawzall
+SBL
+Scala
+Scheme
+Scilab
+Scol
+Scratch
+Script.NET
+Sed
+Seed7
+Self
+SETL
+Shakespeare Programming Language ou SPL
+Shift Script
+Signal
+SiMPLE
+SIMPOL
+SIMSCRIPT
+Simula
+SISAL
+Slate
+SLIP
+SMALL
+Smalltalk
+SML
+SNOBOL
+SPITBOL
+Snow
+Snowball
+SNUSP
+SOL
+Span
+SPARK
+Spice
+SPIN
+SP/k
+SPS
+Squeak
+Squirrel
+SR
+SSL
+Strand
+Subtext
+Suneido
+SuperCollider
+SYMPL
+SyncCharts
+SystemVerilog
+
+T[modifier | modifier le code]
+
+T
+TACL
+TACPOL
+TADS
+TAL
+Tcl
+Tea
+TECO
+TELCOMP
+CA-Telon
+TenCORE
+TEX
+TIE
+Thue
+TI-Basic
+Timber
+Tom
+TOM
+Topspeed
+TPU
+Trac
+T-SQL
+TTCN
+Turing
+TUTOR
+TXL
+
+U[modifier | modifier le code]
+
+Ubercode
+Unicon
+Uniface
+uniPaaS
+UNITY
+Unix shell
+Unlambda
+UnrealScript
+USE (Regency Systems)
+V[modifier | modifier le code]
+
+Vala
+VBA
+VBScript
+Verilog
+VHDL
+Visual Basic .NET
+Visual DataFlex
+Visual DialogScript
+Visual FoxPro
+Visual J++
+Visual Objects
+Vvvv
+
+W[modifier | modifier le code]
+
+Water
+WATFIV, WATFOR
+WebQL
+Whitespace
+Winbatch
+WLangage (WinDev)
+Windows PowerShell
+
+X[modifier | modifier le code]
+
+X++
+X10
+XBL
+xHarbour
+XL
+XOTcl
+XPL
+XPL0
+XQuery
+XSLT
+
+Y[modifier | modifier le code]
+
+Y
+Yabasic
+YACC
+YAL
+Yoix
+Yorick
+
+Z[modifier | modifier le code]
+
+Z
+notation Z
+Zeno
+Zonnon
+ZOPL
+ZPL
+ZZT-oop

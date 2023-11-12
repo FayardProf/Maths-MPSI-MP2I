@@ -1,0 +1,253 @@
+\documentclass[book]{magnoliaold}
+
+\magtex{tex_driver={pdftex},
+        tex_packages={float,caption,titling,epigraph,minitoc,slashbox,tabularx,cancel,pgfplots,xypic,nicefrac},
+        tex_pstricks={pstricks,pst-plot}}
+\magfiche{document_nom={Cours de Sup},
+          auteur_nom={François Fayard},
+          auteur_mail={fayard.prof@gmail.com}}
+\magcours{cours_matiere={maths},
+          cours_niveau={mpsi},
+          cours_chapitre_numero={11},
+          cours_chapitre={Dérivation}}
+\magmisenpage{misenpage_presentation={tikzvelvia},
+              misenpage_format={a4},
+              misenpage_nbcolonnes={1},
+              misenpage_preuve={non},
+              misenpage_sol={non}}
+\maglieudiff{lieu_lycee={Aux Lazaristes},
+             lieu_classe={MPSI 1},
+             lieu_annee={2020--2021}}
+\magprocess
+
+\usepackage[scale=3]{ccicons}
+\title{{\Huge\bf Cours d'Informatique Commune}\\\vspace{1cm}
+%       \textbf{\Huge 2021--2022}\\
+       \textbf{\Huge Maths Sup}\\\vspace{1cm}
+       \textsc{F. Fayard}\\\vspace{1cm}
+       \includegraphics[width=8cm]{../../Commun/Images/lazos-bde-2024.png}\\%\vspace{1cm}
+       \includegraphics[width=8cm]{../../Commun/Images/lazos.png}}
+% \author{{\sc François Fayard}, {\sc Victor Lambert}}
+% \date{3 Août 2020 -- 1a20aa}
+
+% \pretitle{%
+%   \begin{center}
+%   \includegraphics[width=12cm]{/Users/fayard/Desktop/lazos.png}\\[\bigskipamount]
+% }
+% \posttitle{\end{center}}
+
+\mtcsettitle{minitoc}{}
+\mtcsettitle{secttoc}{Table des matières}
+\mtcsettitle{parttoc}{Table des matières}
+
+\usetikzlibrary{positioning}
+% \lstset{%
+%   frame            = tb,    % draw frame at top and bottom of code block
+%   tabsize          = 1,     % tab space width
+%   numbers          = none,  % display line numbers on the left
+%   framesep         = 3pt,   % expand outward
+%   framerule        = 0.4pt, % expand outward 
+%   commentstyle     = \color{green},      % comment color
+%   keywordstyle     = \color{blue},       % keyword color
+%   stringstyle      = \color{blue},    % string color
+%   backgroundcolor  = \color{colorLazoBlue1Light}, % backgroundcolor color showstringspaces = false,              % do not mark spaces in strings
+%   basicstyle       = \ttfamily,
+%   breaklines       = true
+% }
+
+\input{vc.tex}
+
+\begin{document}
+
+\maketitle
+
+La version de ce document est la \textsc{\GITAbrHash}.\\
+
+% Je remercie Jean-Baptiste Bianquis du lycée du Parc qui a écrit
+% certains chapitres sur lesquels je me suis basé, Jean-Pierre Becirspahic à qui j'ai emprunté de nombreux TPs
+% qu'il a écrit lorsqu'il était professeur à Louis-Le-Grand, Émeric Tourniaire du lycée Henri IV à qui j'ai
+% aussi emprunté un TP et Victor Lambert des Lazaristes qui a partagé le TP sur le cryptage de César. Le chapitre
+% sur les graphes est en grande partie emprunté au livre de NSI de terminale de Jean-Christophe Filliâtre.\\
+
+Merci à tous les élèves des Lazaristes pour leurs remarques et corrections. Nous remercions particulièrement
+\nom{Arthur Buis}, \nom{Raphaël Des Boscs}, \nom{Sacha Evrard}, \nom{Titouan Francheteau}, \nom{Hélène Ghaleb}, \nom{Cyprien Mas}, \nom{Alessandro Morales}, \nom{Antoine Nippert}, \nom{Martin Palandre}, \nom{Léa Sulpice} et bien entendu \nom{Carole Vacherand} pour leurs
+nombreuses corrections apportées.\\
+
+\vfill
+
+
+\begin{center}
+  \ccbysa\\
+  \vspace{2ex}
+  This work is licensed under a Creative Commons\\
+  Attribution-ShareAlike 4.0 International License.\\
+  \url{https://creativecommons.org/licenses/by-sa/4.0/legalcode.fr}\\
+  \vspace{2ex}
+  La dernière version de ce document ainsi que\\
+  les sources \LaTeX{} sont disponibles à l'adresse\\
+  \url{https://github.com/FayardProf/Maths-MPSI-MP2I}
+  \end{center}
+  \vspace{2ex}
+  \begin{center}
+  \textbf{Vous êtes autorisés à~:}
+  \end{center}
+  \vspace{2ex}
+  \begin{itemize}
+  \item \textbf{Partager}~: copier, distribuer et communiquer le matériel par tous les moyens et sous tous formats.
+  \item \textbf{Adapter}~: remixer, transformer et créer à partir du matériel
+  pour toute utilisation, y compris commerciale.
+  \end{itemize}
+  \vspace{2ex}
+  \begin{center}
+  \textbf{Selon les conditions suivantes~:}
+  \end{center}
+  \vspace{2ex}
+  \begin{itemize}
+    \item \textbf{Attribution}~: Vous devez créditer l'œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l'œuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'offrant vous soutient ou soutient la façon dont vous avez utilisé son œuvre.
+    \item \textbf{Partage dans les mêmes conditions}~: Dans le cas où vous effectuez un remix, que vous transformez, ou créez à partir du matériel composant l'œuvre originale, vous devez diffuser l'œuvre modifiée dans les même conditions, c'est à dire avec la même licence avec laquelle l'œuvre originale a été diffusée.
+    \item \textbf{Pas de restrictions complémentaires}~: Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'œuvre dans les conditions décrites par la licence.
+    \end{itemize}
+
+% This work is licensed under a Creative Commons license.
+% \begin{center}
+% \includegraphics[width=0.2\textwidth]{../../Commun/Images/cc-by-sa.png}
+% \end{center}
+
+\tableofcontents
+
+\part{Cours}
+
+\chapter{Valeur, type, variable}
+\setcounter{numeroexercicecours}{1}
+\input{cours-valeur_type_variable}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-valeur_type_variable}
+
+\chapter{Flot d'exécution}
+\setcounter{numeroexercicecours}{1}
+\input{cours-flot_execution}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-flot_execution}
+
+\chapter{Fonction}
+\setcounter{numeroexercicecours}{1}
+\input{cours-fonction}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-fonction}
+
+\chapter{Liste}
+\setcounter{numeroexercicecours}{1}
+\input{cours-structure_sequentielle}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-liste}
+
+\chapter{Représentation des données}
+\setcounter{numeroexercicecours}{1}
+\input{cours-representation_donnees}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-representation_donnees}
+
+% \chapter{Récursivité}
+% \setcounter{numeroexercicecours}{1}
+% \input{cours-recursivite}
+% \section{Exercices}
+% \setcounter{numeroexercice}{1}
+% \input{exos-recursivite}
+
+\chapter{Complexité}
+\setcounter{numeroexercicecours}{1}
+\input{cours-complexite}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-complexite}
+
+\chapter{Correction}
+\setcounter{numeroexercicecours}{1}
+\input{cours-correction}
+\section{Exercices}
+\setcounter{numeroexercice}{1}
+\input{exos-correction}
+
+
+\chapter{Graphe}
+\setcounter{numeroexercicecours}{1}
+\input{cours-graphe}
+
+\part{TPs}
+
+\chapter{Introduction, logo}
+\input{tp-introduction_logo}
+
+\chapter{Altimètre, Syracuse}
+\input{tp-altimetre_syracuse}
+
+\chapter{Cryptage de César}
+\input{tp-cryptage_cesar}
+
+% \chapter{Levenshtein, Hamming}
+% \input{tp-levenshtein_hamming}
+
+\chapter{Sudoku}
+\input{tp-sudoku}
+
+\chapter{Récursif, ligne d'horizon}
+\input{tp-recursif_horizon}
+
+\chapter{Coupe de somme minimale}
+\input{tp-coupe_somme_minimale}
+
+\part{Langage Python}
+Cette annexe liste limitativement les éléments du langage Python (version 3 ou supérieure) dont la connaissance est exigible des étudiants. Aucun concept sous-jacent n'est exigible au titre de la présente annexe.\\
+
+Aucune connaissance sur un module particulier n'est exigible des étudiants.\\
+
+Toute utilisation d'autres éléments du langage que ceux que liste cette annexe, ou d'une fonction d'un module, doit obligatoirement être accompagnée de la documentation utile, sans que puisse être attendue une quelconque maîtrise par les étudiants de ces éléments.
+
+\subsubsection*{Traits généraux}
+\begin{itemize}
+\item Typage dynamique~: l'interpréteur détermine le type à la volée lors de l'exécution du code.
+\item Principe d'indentation.
+\item Portée lexicale~: lorsqu'une expression fait référence à une variable à l'intérieur d'une fonction, Python cherche la valeur définie à l'intérieur de la fonction et à défaut la valeur dans l'espace global du module.
+\item Appel de fonction par valeur~: l'exécution de \verb|f(x)| évalue d'abord $x$ puis exécute $f$ avec la valeur calculée.
+\end{itemize}
+
+\subsubsection*{Types de base}
+\begin{itemize}
+\item Opérations sur les entiers (\verb|int|)~: \verb|+|, \verb|-|, \verb|*|, \verb|//|, \verb|**|, \verb|%| avec des opérandes positifs.
+\item Opérations sur les flottants (\verb|float|)~: \verb|+|, \verb|-|, \verb|*|, \verb|/|, \verb|**|.
+\item Opérations sur les booléens (\verb|bool|)~: \verb|not|, \verb|or|, \verb|and| (et leur caractère paresseux).
+\item Comparaisons \verb|==|, \verb|!=|, \verb|<|, \verb|>|, \verb|<=|, \verb|>=|.
+\end{itemize}
+
+\subsubsection*{Types structurés}
+\begin{itemize}
+\item Structures indicées immuables (chaînes, tuples)~: \verb|len|, accès par indice positif valide, concaténation \verb|+|, répétition \verb|*|, tranche.
+\item Listes~: création par compréhension \verb|[e for x in s]|, par \verb|[e] * n|, par \verb|append| successifs~; \verb|len|, accès par indice positif valide~; concaténation \verb|+|, extraction de tranche, copie (y compris son caractère superficiel)~; \verb|pop| en dernière position.
+\item Dictionnaires~: création \verb|{c_1 : v_1, ..., c_n : v_n}|, accès, insertion, présence d'une clé \verb|k in d|, \verb|len|, \verb|copy|.
+\end{itemize}
+
+\subsubsection*{Structures de contrôle}
+\begin{itemize}
+\item Instruction d'affectation avec \verb|=|. Dépaquetage de tuples.
+\item Instruction conditionnelle~: \verb|if|, \verb|elif|, \verb|else|.
+\item Boucle \verb|while| (sans \verb|else|). \verb|break|, \verb|return| dans un corps de boucle.
+\item Boucle \verb|for| (sans \verb|else|) et itération sur \verb|range(a, b)|, une chaîne, un tuple, une liste, un dictionnaire au travers des méthodes \verb|keys| et \verb|items|.
+\item Définition d'une fonction \verb|def f(p_1, ..., p_n)|, \verb|return|.
+\end{itemize}
+
+\subsubsection*{Divers}
+\begin{itemize}
+\item Introduction d'un commentaire avec \verb|#|.
+\item Utilisation simple de \verb|print|, sans paramètre facultatif.
+\item Importation de modules avec \verb|import module|, \verb|import module as alias|, \verb|from module import f, g, ...|
+\item Manipulation de fichiers texte (la documentation utile de ces fonctions doit être rappelée~; tout problème relatif aux encodages est éludé)~: \verb|open|, \verb|read|, \verb|readline|, \verb|readlines|, \verb|split|, \verb|write|, \verb|close|.
+\item Assertion~: \verb|assert| (sans message d'erreur).
+\end{itemize}
+
+
+\end{document}

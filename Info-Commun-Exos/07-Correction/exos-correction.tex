@@ -1,0 +1,136 @@
+\documentclass{magnoliaold}
+
+\magtex{tex_driver={pdftex}}
+\magfiche{document_nom={Complexité},
+          auteur_nom={François Fayard},
+          auteur_mail={francois.fayard@auxlazaristeslasalle.fr}}
+\magexos{exos_matiere={maths},
+         exos_niveau={mpsi},
+         exos_chapitre_numero={1},
+         exos_theme={Complexité}}
+\magmisenpage{}
+\maglieudiff{}
+\magprocess
+
+\begin{document}
+
+%BEGIN_BOOK
+
+\magsection{Correction}
+\magsubsection{Spécification d'une fonction}
+\magsubsection{Correction partielle, correction totale}
+\magsection{Algorithme itératif}
+\magsubsection{Terminaison}
+\magsubsection{Correction}
+
+\exercice{nom={Fonction mystère}}
+En déterminant un invariant, déterminer le rôle de la fonction suivante.
+\begin{pythoncode}
+def f(n):
+    i = 0
+    s = 0
+    while s < n:
+        s = s + 2 * i + 1
+        i = i + 1
+    return i
+\end{pythoncode}
+
+% \exercice{nom={Recherche dichotomique}}
+% Voici une variante de la recherche dichotomique.
+% \begin{pythoncodeline}
+% def dichotomique(x, a):
+%     lo = 0
+%     hi = len(a)
+%     while lo + 1 < hi:
+%         mid = (lo + hi) / 2
+%         if x < a[mid]:
+%             hi = mid
+%         else:
+%             lo = mid
+%     if a[lo] == x:
+%         return lo
+%     else:
+%         return -1
+% \end{pythoncodeline}
+
+\magsubsection{Exemples fondamentaux}
+\magsection{Algorithme récursif}
+\magsubsection{Principe général}
+
+\exercice{nom={Fonction mystère}}
+On considère la fonction récursive suivante.
+\begin{pythoncode}
+def f(n):
+    if n > 100:
+        return n - 10
+    return f(f(n + 11))
+\end{pythoncode}
+\begin{questions}
+\question Prouver sa terminaison lorsque $n\in\N$. 
+\question Déterminer ce qu'elle calcule.
+\end{questions}
+
+\exercice{nom={Fonction de Hofstadter}}
+On considère la fonction $g$ de Hofstadter définie sur $\N$ de la manière suivante. 
+\begin{pythoncode}
+def g(n):
+    if n == 0:
+        return 0
+    return n - g(g(n - 1))
+\end{pythoncode}
+\begin{questions}
+\question Prouver sa terminaison lorsque $n\in\N$. 
+\question Si vous avez l'inspiration, prouvez que
+  \[\forall n\in\N\qsep g(n)=\ent{\frac{n+1}{\phi}}\]
+	où $\phi\defeq\frac{1+\sqrt{5}}{2}$ est le nombre d'or.
+\end{questions}
+
+
+% \exercice{nom={À la recherche de nombres premiers : une méthode naïve}}
+% On admettra les résultats suivants :
+% \[
+% \sum_{k=1}^n \frac{1}{k}\:=\: {\mathcal O}(\ln n) \quad \text{et} \quad \sum_{k=1}^n k\ln k\:=\: {\mathcal O}(n^2\ln n)\:\:.
+% \]
+% \begin{enumerate}
+% \item En adaptant l'algorithme de la division euclidienne par différences successives, écrire une fonction Python {\tt reste(a,b)} qui prend en argument deux entiers $a\in\N$ et $b\in\N^*$ et renvoie le reste dans la division euclidienne de $a$ par $b$. Évaluer la complexité de cette fonction.
+% \item Écrire une fonction Python {\tt nb\_div(n)} qui prend en argument un entier $n$ et dont l'appel renvoie le nombre de diviseurs de $n$. 
+% Prouver la validité de cette fonction avec un invariant de boucle bien choisi. Montrer que la complexité de cette fonction est en $\mathcal{O}(n\ln n)$.
+% \item
+% \begin{enumerate}
+% 		\item On suppose que la variable {\tt k} contient un entier naturel non nul.
+		
+% Compléter l'instruction suivante, pour qu'elle devienne un booléen de valeur {\tt True} si {\tt k} est un  nombre premier et un booléen de 
+% valeur {\tt False} sinon: 
+% 		\begin{center}
+% 					{\tt nb\_div(k) == ...}
+% 		\end{center}
+% 		\item En déduire une fonction Python {\tt premiers\_naive(n)} prenant en argument un entier naturel non nul $n$ et dont l'appel affiche successivement tous les nombres premiers inférieurs ou égaux à $n$. 
+% 		\item Évaluer la complexité de la fonction  {\tt premiers\_naive}.
+% \end{enumerate}
+% \end{enumerate}
+
+% \exercice{nom={À la recherche des nombres premiers avec Ératosthène}}
+% 	On reprend la méthode du crible d'Eratosthène vue dans les exercice 2 du chapitre précédent et on la détaille un peu pour en évaluer la complexité.
+	
+% 	Là, on aura besoin de savoir que :
+% 	\[
+% 	\sum_{k=1, \: k\,\text{premier}}^n \frac{1}{k}\:=\: {\mathcal O}(\ln \ln n) \:\:.
+% 	\]
+% 	\begin{enumerate}
+% 	\item Écrire une fonction Python {\tt recherche(L,n,deb)} qui prend en argument une liste {\tt L} de $n$ cases et un indice de case {\tt deb} valide et renvoie le plus petit indice $k$ tel que $k \geqslant deb$  et $L[k]\neq 0$ et renvoie $n+1$ s'il n'existe pas de tel indice.
+% 	\item  
+% 		\begin{enumerate}
+% 		\item  On suppose que $j \in \N$ et que $j^2 \leqslant n$. Écrire une fonction {\tt barre(L,n,j)} qui, lorsque {\tt L} est une liste 
+% 		de $n$ cases, affecte à toutes les cases dont l'indice est supérieur ou égal à $j^2$ et 
+% 		est divisible par $j$ la valeur $0$ et laisse inchangées les autres cases. 
+% 		\item  Vérifier que cette fonction utilise $\lfloor \frac{n}{j} \rfloor -j+1$ affectations. 
+% 		\end{enumerate}
+% 	\item En déduire une fonction {\tt barre\_pas\_premier(n)} qui lorsque $n$ est un entier supérieur ou égal à $2$ renvoie la liste $P$ de $n$ cases, définies par $P[i]=i$ si $i$ est un nombre premier et $P[i]=0$ sinon. 
+% 	\item En déduire une fonction {\tt premiers\_mieux(n)} qui affiche successivement tous les nombres premiers inférieurs ou égaux  $n$. 
+% 	\item Donner une majoration du nombre d'opérations élémentaires (affectation ou test logique) utilisés lors de l'exécution de {\tt premiers\_mieux}(n).
+% 	\end{enumerate}
+
+
+%END_BOOK
+
+\end{document}

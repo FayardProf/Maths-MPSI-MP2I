@@ -1,0 +1,85 @@
+\documentclass{magnolia}
+
+\magtex{tex_driver={pdftex}}
+\magfiche{document_nom={Exercices sur les développements limités},
+          auteur_nom={François Fayard},
+          auteur_mail={fayard.prof@gmail.com}}
+\magexos{exos_matiere={maths},
+         exos_niveau={mpsi},
+         exos_chapitre_numero={22},
+         exos_theme={Famille sommable}}
+\magmisenpage{}
+\maglieudiff{}
+\magprocess
+
+\begin{document}
+%BEGIN_BOOK
+
+\magsection{Famille sommable}
+\magsubsection{Famille sommable de réels positifs}
+
+\exercice{nom={Exercice}}
+Soit $\alpha\in\R$. Calculer
+\[\sum_{n\in\Ns} \sum_{k\geq n} \frac{1}{k^\alpha}, \qquad
+  \sum_{m\in\Ns}\sum_{n\in\Ns} \frac{1}{(m+n)^{\alpha}}.\]
+
+\magsubsection{Famille sommable d'éléments de $\K$}
+
+\exercice{nom={Exercice}}
+Pour tout $k\in\N$, on pose
+\[L_k\defeq \prod_{i=0}^{k-1} (X-i).\]
+\begin{questions}
+\question Montrer que pour tout $P\in\polyC$, la famille
+  \[\p{\frac{P(n)}{n!}}_{n\in\N}\]
+  est sommable.
+\question Calculer
+  \[\sum_{n\in\N} \frac{L_k(n)}{n!}\]
+  pour tout $k\in\N$.
+\question En déduire
+  \[\sum_{n\in\N} \frac{n^4}{n!}.\]
+\end{questions}
+
+\exercice{nom={Exercice}}
+\begin{questions}
+\question Prouver la sommabilité et calculer
+\[\sum_{n\in\N} \sum_{k\geq n} \frac{1}{k!}, \qquad
+  \sum_{n\in\Ns} \sum_{k\geq n} \frac{(-1)^k}{k^3}, \qquad
+  \sum_{n\in\Ns} (-1)^n \sum_{k\geq n} \frac{1}{k^3}.\]
+\question Soit $z\in\C$ tel que $\abs{z}<1$. Prouver la sommabilité et calculer
+  \[\sum_{n\in\N} \frac{z^{2^n}}{1-z^{2^{n+1}}}.\]
+\end{questions}
+
+\exercice{nom={Exercice}}
+À quelles conditions nécessaires et suffisantes sur $a,b,z\in\C$ les familles suivantes
+sont-elles sommables~?
+\[\p{\frac{z^p}{q!}}_{p,q\in\N}, \qquad
+  \p{\frac{a^p b^q}{p!q!}}_{p,q\in\N}, \qquad
+  \p{\frac{q^p z^p}{p!q!}}_{p,q\in\N}, \qquad
+  \p{\binom{p+q}{p}z^{p+q}}_{p,q\in\N}.\]
+
+\exercice{nom={Exercice}}
+\begin{questions}
+\question Soit $n\in\N$. Décomposer en éléments simples la fraction rationnelle
+  \[F_n\defeq \frac{1}{X(X+1)\cdots(X+n)}.\]
+\question En déduire que pour tout $z\in\C\setminus(-\N)$
+  \[\sum_{n\in\N} \frac{1}{z(z+1)\cdots(z+n)}=\e\sum_{n\in\N} \frac{(-1)^n}{n!(z+n)}.\]
+\end{questions}
+
+
+
+
+
+
+
+
+
+
+%[$\star$]
+%Quels sont les réels dont le développement décimal est périodique à partir d'un certain rang ?
+%
+
+
+
+%END_BOOK
+
+\end{document}

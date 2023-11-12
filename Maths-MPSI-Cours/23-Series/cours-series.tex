@@ -1,0 +1,478 @@
+\documentclass{magnolia}
+
+\magtex{tex_driver={pdftex},
+        tex_packages={epigraph,xypic}}
+\magfiche{document_nom={Cours sur les séries},
+          auteur_nom={François Fayard},
+          auteur_mail={fayard.prof@gmail.com}}
+\magcours{cours_matiere={maths},
+          cours_niveau={mpsi},
+          cours_chapitre_numero={21},
+          cours_chapitre={Séries}}
+\magmisenpage{misenpage_presentation={tikzvelvia},
+          misenpage_format={a4},
+          misenpage_nbcolonnes={1},
+          misenpage_preuve={non},
+          misenpage_sol={non}}
+\magmisenpage{}
+\maglieudiff{}
+\magprocess
+
+\begin{document}
+
+%BEGIN_BOOK
+
+
+\magtoc
+\vspace{2ex}
+Dans ce chapitre, $\K$ désignera l'un des corps $\R$ ou $\C$.
+
+\section{Série}
+\subsection{Série}
+
+\begin{definition}
+Soit $(u_n)$ une suite d'éléments de $\K$. On appelle \emph{série de terme général $u_n$}
+et on note $\sum u_n$ la suite $(S_n)$ définie par
+\[\forall n\in\N\qsep S_n\defeq \sum_{k=0}^n u_k.\]
+Le terme $S_n$ est appelé \emph{somme partielle d'indice $n$} de la série.
+\end{definition}
+
+% \begin{remarqueUnique}
+% \remarque Soit $(v_n)$ une suite à valeurs dans $\RouC$. On définit la suite $(u_n)$ par
+%   \[\forall n\in\N\qsep u_n\defeq v_{n+1} - v_n.\]
+%   Alors
+%   \[\forall n\in\N\qsep v_n=v_0 + \sum_{k=0}^{n-1} u_k.\]
+%   L'étude de la suite $(v_n)$ se ramène donc à l'étude de la série $\sum u_n$. On dit que
+%   la suite $(u_n)$ est la suite \emph{dérivée} de la suite $(v_n)$. Il sera parfois utile
+%   d'exprimer une suite à l'aide d'une série afin d'appliquer des techniques propres à ces
+%   dernières.
+% \end{remarqueUnique}
+
+\begin{definition}
+On dit qu'une série $\sum u_n$ \emph{converge} lorsque la suite de ses sommes partielles
+converge. Si c'est le cas, sa limite $l\in\K$ est appelée \emph{somme} de la série. On
+la note
+\[\sum_{n=0}^{+\infty} u_n.\]
+Dans le cas contraire, on dit qu'elle \emph{diverge}.
+\end{definition}
+
+\begin{remarques}
+\remarque Si on change un nombre fini de termes de la suite $(u_n)$, on ne change pas
+  la nature de la série $\sum u_n$. Par contre, si elle converge, cela peut changer sa somme.
+\remarque Soit $\sum u_n$ une série convergente. Alors, quel que soit $n\in\N$
+  \[\sum_{k=0}^{+\infty} u_k=\sum_{k=0}^n u_k + \sum_{k=n+1}^{+\infty} u_k.\]
+\end{remarques}
+
+% \begin{remarques}
+% \remarque Lorsque la série $\sum u_n$ converge vers $l$, on définit la suite $(r_n)$ par
+%   \[\forall n\in\N\qsep r_n\defeq l-s_n.\]
+%   Quel que soit $n\in\N$, on a alors
+%   \[\sum_{k=n+1}^m u_k \tendvers{m}{+\infty} r_n\]
+%   et on note
+%   \[r_n=\sum_{k=n+1}^{+\infty} u_k.\]
+% \end{remarques}
+
+\begin{exoUnique}
+\exo Montrer que la série
+  \[\sum_{n\geq 1} \frac{1}{n(n+1)}\]
+  converge et calculer sa somme.
+\end{exoUnique}
+
+
+\begin{definition}
+Soit $\sum u_n$ une série convergente. On définit la suite $(R_n)$ par
+\begin{eqnarray*}
+\forall n\in\N\qsep R_n &\defeq& \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^n u_k\\
+&=& \sum_{k=n+1}^{+\infty} u_k.
+\end{eqnarray*}
+Le terme $R_n$ est appelé \emph{reste d'indice $n$} de la série.
+\end{definition}
+
+\begin{remarqueUnique}
+\remarque La suite $(R_n)$ des restes converge vers 0.
+\end{remarqueUnique}
+
+\begin{proposition}
+Soit $\sum u_n$ une série. Si elle est convergente, alors
+\[u_n\tendvers{n}{+\infty}0.\]
+Par contraposée, si la suite $(u_n)$ ne converge pas vers 0, la série $\sum u_n$ est
+divergente. On dit qu'elle diverge \emph{grossièrement}.
+\end{proposition}
+
+\begin{remarqueUnique}
+\remarque Il est possible qu'une série diverge sans diverger grossièrement.
+  Par exemple, si $(u_n)$ est la suite définie par
+  \[\forall n\in\N\qsep u_n\defeq\sqrt{n+1}-\sqrt{n}\]
+  alors, la série associée diverge alors que la suite $(u_n)$ converge vers 0.
+\end{remarqueUnique}
+
+\begin{proposition}
+La suite $(u_n)$ et la série $\sum (u_{n+1}-u_n)$ sont de même nature.
+\end{proposition}
+
+\begin{remarqueUnique}
+\remarque Si $(u_n)$ est une suite, la suite de terme général $u_{n+1}-u_n$ est appelée
+  \emph{dérivée} de la suite $(u_n)$. Par sommation télescopique
+  \[\forall n\in\N\qsep u_n=u_0 + \sum_{k=0}^{n-1} (u_{k+1}-u_k).\]
+  L'étude de la suite $(u_n)$ se ramène donc à l'étude de la série
+  $\sum (u_{n+1}-u_n)$.
+\end{remarqueUnique}
+
+\begin{proposition}
+Soit $\sum u_n$ et $\sum v_n$ deux séries convergentes et
+$\lambda,\mu\in\K$. Alors, la série \mbox{$\sum (\lambda u_n+\mu v_n)$} est convergente et
+\[\sum_{n=0}^{+\infty} \p{\lambda u_n+\mu v_n}=\lambda\sum_{n=0}^{+\infty} u_n
+  +\mu\sum_{n=0}^{+\infty} v_n.\]
+\end{proposition}
+
+\begin{remarques}
+\remarque Attention, il est possible que la série $\sum (\lambda u_n+\mu v_n)$ soit convergente
+  sans que les séries $\sum u_n$ et $\sum v_n$ le soient. Avant d'écrire
+  \[\sum_{n=0}^{+\infty} \p{\lambda u_n+\mu v_n}=\lambda\sum_{n=0}^{+\infty} u_n
+    +\mu\sum_{n=0}^{+\infty} v_n\]
+  il faudra donc toujours vérifier que les séries $\sum u_n$ et $\sum v_n$ soient convergentes.
+  Un tel oubli pourrait conduire à écrire des horreurs comme
+  \begin{eqnarray*}
+  0 = \sum_{n=0}^{+\infty} 0 &=& \sum_{n=0}^{+\infty} (1+(-1))\\
+  &=& \sum_{n=0}^{+\infty} 1 + \sum_{n=0}^{+\infty} (-1).
+  \end{eqnarray*}
+  La dernière expression n'a en effet aucun sens car les deux séries sont grossièrement divergentes.
+\remarque Si $\sum u_n$ est convergente et $\sum v_n$ est divergente, alors
+  $\sum (u_n+v_n)$ est divergente.
+\end{remarques}
+
+
+% \begin{exoUnique}
+% \exo Déterminer les $z\in\C$ pour lesquels la série
+%   \[\sum_{n\in\N} z^n\]
+%   converge. Lorsque c'est le cas, calculer sa somme.
+% \end{exoUnique}
+
+\begin{proposition}
+Soit $z\in\C$. Alors la série
+\[\sum z^n\]
+converge si et seulement si $\abs{z}<1$. Si tel est le cas, sa somme est
+\[\sum_{n=0}^{+\infty} z^n = \frac{1}{1-z}.\]
+\end{proposition}
+
+\begin{exoUnique}
+\exo Soit $(F_n)$ la suite de Fibonacci définie par
+  \[F_0\defeq 0, \quad F_1\defeq 1, \et \forall n\in\N \qsep F_{n+2}\defeq F_{n+1}+F_n.\]
+  Démontrer l'existence puis calculer
+  \[\sum_{n=0}^{+\infty} \frac{F_n}{2^n}.\]
+\begin{sol}
+On trouve 2.
+\end{sol}
+\end{exoUnique}
+
+% \begin{exoUnique}
+% \exo Pour tout $x\in\intero{-1}{1}$, calculer
+%   \[\sum (n+1)x^n.\]
+%   On pourra conjecturer le résultat avant de le prouver rigoureusement.
+% \end{exoUnique}
+
+\begin{proposition}
+Soit $z\in\C$. Alors la série
+\[\sum \frac{z^n}{n!}\]
+est convergente et
+\[\sum_{n=0}^{+\infty} \frac{z^n}{n!}=\e^z.\]
+\end{proposition}
+
+\begin{exoUnique}
+\exo Établir l'existence et calculer
+    \[\sum_{n=0}^{+\infty} \frac{n^2+1}{n!}.\]
+\begin{sol}
+On trouve $3\e$.
+\end{sol}
+\end{exoUnique}
+
+
+
+\subsection{Série à termes positifs}
+
+\begin{definition}
+On dit qu'une série réelle $\sum u_n$ est à termes positifs lorsque
+\[\forall n\in\N\qsep u_n\geq 0.\]
+\end{definition}
+
+\begin{remarques}
+\remarque La suite des sommes partielles d'une série à termes positifs est croissante.
+  Réciproquement, si $(u_n)$ est une suite croissante, sa suite dérivée $(u_{n+1}-u_n)$ est
+  une suite à termes positifs.
+\remarque Puisque la convergence d'une série ne dépend pas de ses premiers termes, les
+  théorèmes de convergence sur les séries à termes positifs s'appliquent même si la série
+  est à termes positifs à partir d'un certain rang. Bien entendu, des théorèmes similaires
+  aux théorèmes que nous allons énoncer existent pour les séries à termes négatifs.
+  Les théorèmes que nous allons énoncer dans cette section sont donc utiles pour étudier
+  les séries de signe constant à partir d'un certain rang.
+\end{remarques}
+
+\begin{proposition}
+Une série à termes positifs converge si et seulement si la suite de ses sommes partielles
+est majorée.
+\end{proposition}
+
+\begin{proposition}[nom={Série de \nom{Riemann}}]
+Soit $\alpha\in\R$. Alors, la série
+\[\sum \frac{1}{n^\alpha}\]
+est convergente si et seulement si $\alpha > 1$.
+\end{proposition}
+
+\begin{remarqueUnique}
+\remarque En particulier, la série harmonique $(H_n)$ définie par
+  \[\forall n\in\N\qsep H_n\defeq\sum_{k=1}^n \frac{1}{k}\]
+  diverge. Une comparaison série intégrale permet de montrer que
+  $H_n\equi{n}{+\infty} \ln n$.
+\end{remarqueUnique}
+
+\begin{exos}
+\exo Montrer que la série
+  \[\sum \frac{1}{n^2}\]
+  converge et donner un équivalent de son reste.
+\exo Prouver la divergence et donner un équivalent des sommes partielles de la série
+  \[\sum \frac{1}{n \ln n}.\]
+\end{exos}
+
+\begin{proposition}
+Soit $\sum u_n$ et $\sum v_n$ deux séries à termes positifs telles que
+\[\forall n\in\N\qsep u_n\leq v_n.\]
+\begin{itemize}
+\item Si la série $\sum v_n$ converge, alors il en est de même pour $\sum u_n$.
+\item Si la série $\sum u_n$ diverge, alors il en est de même pour $\sum v_n$.
+\end{itemize}
+\end{proposition}
+
+\begin{exos}
+\exo Donner la nature des séries
+  \[\sum\frac{\sin^2 n}{n^3},\qquad\sum\frac{\cos^2\p{\frac{n\pi}{3}}}{\sqrt{n}}.\]
+\exo Soit $r\in\RP$. Déterminer la nature de la série
+  \[\sum \frac{r^n}{n}\]
+  en fonction de $r$.
+\end{exos}
+
+\begin{proposition}
+Soit $\sum u_n$ et $\sum v_n$ deux séries à termes positifs. On suppose que
+\[u_n=\grando{n}{+\infty}{v_n}\]
+et que la série $\sum v_n$ est convergente. Alors la série $\sum u_n$ est convergente.
+\end{proposition}
+
+\begin{remarqueUnique}
+\remarque En particulier, pour des séries à termes positifs, si
+\[u_n=\petito{n}{+\infty}{v_n}\]
+et si $\sum v_n$ est convergente, alors $\sum u_n$ est convergente. 
+\end{remarqueUnique}
+
+\begin{exoUnique}
+\exo Déterminer la nature de la série
+  \[\sum \frac{\ln n}{n\sqrt{n}}.\]
+\end{exoUnique}
+
+\begin{proposition}
+Soit $\sum u_n$ et $\sum v_n$ deux séries réelles. On suppose que $\sum v_n$ est à termes
+positifs et que
+\[u_n\equi{n}{+\infty} v_n.\]
+Alors la série $\sum u_n$ est à termes positifs à partir d'un certain rang et les deux séries
+sont de même nature.
+\end{proposition}
+
+\begin{exos}
+\exo Établir la nature des séries suivantes
+  \[\sum \frac{1}{3n+1}, \qquad\sum \tan\p{\frac{1}{n}}, \qquad \sum \frac{1}{2^n-n}.\]
+\exo Donner la nature des séries
+  \[\sum \ln\p{\tan\frac{\pi n}{4n+1}},\qquad \sum \cro{\p{\tanh n}^{\frac{1}{n}}-1}.\]
+\exo Montrer qu'il existe $\gamma\in\R$ tel que
+  \[\sum_{k=1}^n \frac 1k = \ln n+ \gamma + \petito{n}{+\infty}{1}.\]
+  La constante $\gamma\approx 0.577$ est appelée constante d'\nom{Euler}.
+\end{exos}
+
+
+\subsection{Série absolument convergente}
+
+\begin{definition}
+Soit $\sum u_n$ une série d'éléments de $\K$. Si la série à termes positifs
+\[\sum \abs{u_n}\]
+converge, alors la série $\sum u_n$ converge. On dit dans ce cas que la série
+$\sum u_n$ est \emph{absolument convergente}.
+\end{definition}
+
+\begin{remarqueUnique}
+\remarque Une série convergente qui n'est pas absolument convergente est appelée série
+  \emph{semi-convergente}.
+\end{remarqueUnique}
+
+\begin{exoUnique}
+\exo Montrer que la série
+  \[\sum\frac{\sin n}{n\sqrt{n}}\]
+  est convergente.
+\end{exoUnique}
+
+
+\begin{proposition}
+Soit $\sum u_n$ une série d'éléments de $\K$ et $\sum v_n$ une série à termes positifs
+telle que
+\[u_n=\grando{n}{+\infty}{v_n}.\]
+Si $\sum v_n$ est convergente, alors $\sum u_n$ est absolument convergente, donc convergente.
+\end{proposition}
+
+\begin{remarqueUnique}
+\remarque En particulier, si $(v_n)$ est une suite positive, si
+  \[u_n=\petito{n}{+\infty}{v_n}\]
+  et si $\sum v_n$ est convergente, alors $\sum u_n$ est absolument convergente, donc
+  convergente.
+\end{remarqueUnique}
+
+\begin{proposition}[nom={Règle de d'\nom{Alembert}}]
+Soit $\sum u_n$ une série d'éléments de $\K$ ne s'annulant pas. On suppose que
+\[\abs{\frac{u_{n+1}}{u_n}}\tendvers{n}{+\infty} \omega\in\RP\cup\ens{+\infty}.\]
+Alors
+\begin{itemize}
+\item Si $\omega<1$, la série $\sum u_n$ est absolument convergente.
+\item Si $\omega>1$, la série $\sum u_n$ est grossièrement divergente.
+\end{itemize}
+\end{proposition}
+
+\begin{remarqueUnique}
+\remarque Si $\omega=1$, la règle de d'\nom{Alembert} ne permet pas de conclure. Dans ce cas, il peut être
+  intéressant d'effectuer une comparaison avec une série de \nom{Riemann}.
+\end{remarqueUnique}
+
+\begin{exos}
+\exo Déterminer la nature de la série
+  \[\sum \frac{n^4}{3^n}.\]
+\exo Soit $z\in\C$. Retrouver le fait que la série
+  \[\sum \frac{z^n}{n!}\]
+  est convergente.
+  \exo Soit $a,b\in\R$. Donner une condition nécessaire et suffisante sur $a$ et $b$ pour que la série
+  \[\sum \cro{\frac{n^2+2}{n^2+2n+1}-\p{a+\frac{b}{n}}}\]
+  soit convergente.
+\end{exos}
+
+\subsection{Série semi-convergente}
+
+\begin{theoreme}[nom={Théorème des séries alternées}]
+Soit $(u_n)$ une suite à termes positifs, décroissante et convergeant vers 0.
+Alors la série
+\[\sum (-1)^n u_n\]
+converge. De plus, si $(R_n)$ est la suite des restes définie par
+\[\forall n\in\N\qsep R_n\defeq\sum_{k=n+1}^{+\infty} (-1)^k u_k\]
+alors, pour tout $n\in\N$, $R_n$ est du signe de $(-1)^{n+1}$ et $\abs{R_n}\leq u_{n+1}$.
+\end{theoreme}
+
+\begin{remarques}
+\remarque La série
+  \[\sum \frac{(-1)^n}{\sqrt{n}}\]
+  est convergente, mais n'est pas absolument convergente.
+\remarque Les séries alternées permettent de construire des suites $(u_n)$ et $(v_n)$
+  qui sont équivalentes en $+\infty$ mais qui ne sont pas de même nature. Par exemple,
+  si on définit les suites $(u_n)$ et $(v_n)$ par
+  \[\forall n\in\Ns\qsep u_n\defeq\frac{(-1)^n}{\sqrt{n}} \et
+    v_n\defeq\frac{(-1)^n}{\sqrt{n}}+\frac{1}{n}\]
+  alors $(u_n)$ et $(v_n)$ sont équivalentes en $+\infty$ bien que $\sum u_n$ soit convergente
+  et que $\sum v_n$ soit divergente.
+\end{remarques}
+
+\begin{exos}
+\exo Soit $\alpha\in\R$. Donner une condition nécessaire et suffisante sur $\alpha$ pour que
+  la série
+  \[\sum \frac{(-1)^n}{n^\alpha}\]
+  soit convergente.
+\exo Soit $\alpha>0$. Discuter, selon $\alpha$, de la nature de la série
+  \[\sum \frac{(-1)^n}{n^\alpha + (-1)^n}.\]
+\end{exos}
+
+% \begin{remarqueUnique}
+% \remarque Il arrive que l'on doive prouver la convergence de séries de la forme
+%   $\sum a_n u_n$ où
+%   \begin{itemize}
+%   \item La suite $(u_n)$ est une suite positive, décroissante et convergeant vers 0.
+%   \item La série de terme général $(a_n)$ est bornée.
+%   \end{itemize}
+%   Pour prouver la convergence d'une telle série on applique ce qu'on appelle une
+%   \emph{transformée d'\nom{Abel}} qui est l'équivalent discret d'une intégration par
+%   parties. On définit la suite $(A_n)$ par
+%   \[\forall n\in\N\qsep A_n\defeq\sum_{k=0}^{n-1} a_k.\]
+%   Alors
+%   \begin{eqnarray*}
+%   \forall n\in\N\qsep
+%   \sum_{k=0}^n a_k u_k
+%   &=& \sum_{k=0}^n (A_{k+1} - A_k)u_k\\
+%   &=& \sum_{k=0}^n A_{k+1} u_k  - \sum_{k=0}^n A_k u_k\\
+%   &=& \sum_{k=1}^{n+1} A_k u_{k-1}  - \sum_{k=0}^n A_k u_k\\
+%   &=& \p{A_{n+1} u_n - A_0 u_0} - \sum_{k=1}^n A_k (u_{k}-u_{k-1}).
+%   \end{eqnarray*}
+%   On montre ensuite que $A_{n+1} u_n$ tend vers 0 lorsque $n$ tend vers $+\infty$ et
+%   que la série $\sum A_n(u_n - u_{n-1})$ est absolument convergente, ce qui permet de prouver
+%   la convergence de $\sum a_n u_n$.
+% \end{remarqueUnique}
+
+% \begin{exoUnique}
+% \exo Soit $\theta\in\R\setminus 2\pi\Z$ et $\alpha\in\RPs$. Montrer que la série
+%   \[\sum \frac{\cos(n\theta)}{n^\alpha}\]
+%   est convergente.
+% \end{exoUnique}
+
+
+% \subsection{Développement décimal d'un réel}
+
+% \begin{proposition}[utile=1, nom=Développement décimal propre d'un réel]
+% Soit $x$ un réel positif. Alors il existe un unique $a_0\in\N$ et une unique suite
+% $(a_n)_{n \geq 1}$ d'éléments de $\intere{0}{9}$, non stationnaire égale à $9$, telle que 
+% $$x=\sum\limits_{n=0}^{+\infty} \frac{a_n}{10^n}.$$
+% \end{proposition}
+
+
+% Le but de cette partie est de donner un sens aux écritures suivantes :
+% $$\pi = 3,14159265358979\dots \qquad - \frac{7}{11} = -0,6363636363 \dots $$
+
+
+% \begin{center}
+% \begin{tabular}{lr}
+% \begin{minipage}{6cm}
+% \begin{eqnarray*}
+% x & = & 3,14159265358979\dots \\
+% 10^3 x & = & 3141,59265358979\dots \\
+% \ent{10^3 x} & = & 3141 \\
+% \frac{\ent{10^3 x}}{10^3} &= & 3,141
+% \end{eqnarray*}
+% \end{minipage}
+
+% &
+% \begin{minipage}{6cm}
+% \begin{eqnarray*}
+% x & = & 3,14159265358979\dots \\
+% 10^4 x & = & 31415,9265358979\dots \\
+% \ent{10^4x} & = & 31415 \\
+% \frac{\ent{10^4x}}{10^4} &= & 3,1415
+% \end{eqnarray*}
+% \end{minipage}
+% \end{tabular}
+% \end{center}
+
+
+% On obtient donc une suite $S_n = \frac{\ent{10^n x}}{10^n}$ qui converge vers $x$ et les chiffres $a_n$ qui sont définis par 
+% $$a_0 = \ent{x} \text{ et } a_n = \ent{10^n x} - 10 \ent{10^{n-1}x} \text{ pour } n \geq 1$$
+% de sorte que 
+% $$x = \sum\limits_{n=0}^{\infty} \frac{a_n}{10^n}$$
+
+% Pour que ceci corresponde au développement décimal usuel, il faut prendre $x \geq 0$. Si $x<0$, $\ent{x}$ ne donne pas l'entier avant la virgule.
+% La convention, pour $x<0$, est de prendre le développement décimal de $-x$ puis de mettre un signe moins devant.
+% $a_0$ n'est pas un chiffre mais un entier quelconque.
+
+% Par contre, si $n \geq 1$ alors $a_n \in \intere{0}{9}$.
+% Malheureusement, il n'y a pas unicité d'une telle écriture. Par exemple,
+% $$1=1,000 \dots = 0,999\dots$$
+
+% Pour avoir l'unicité, il faut imposer que la suite $(a_n)$ n'est pas stationnaire égale à $9$ i.e. 
+% $$\forall N \in \N \qsep \exists n \geq N \qsep a_n \neq 9.$$
+% On dit alors que le développement décimal est propre. Montrons que l'on a bien alors l'unicité et l'existence de l'écriture décimale.
+
+% \begin{proposition}[utile=1, nom=Développement décimal propre d'un réel]
+% Soit $x$ un réel positif. Alors il existe un unique $a_0 \in \N$ et une unique suite $(a_n)_{n \geq 1}$ d'entiers entre $0$ et $9$ non stationnaire égale à $9$ telle que 
+% $$x=\sum\limits_{n=0}^{\infty} \frac{a_n}{10^n}.$$
+
+% \end{proposition}
+
+
+
+%END_BOOK
+\end{document}

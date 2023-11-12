@@ -1,0 +1,102 @@
+\documentclass{magnolia}
+
+\magtex{tex_driver={pdftex},
+        tex_packages={siunitx}}
+\magfiche{document_nom={Levenshtein, Hamming},
+          auteur_nom={François Fayard},
+          auteur_mail={francois.fayard@auxlazaristeslasalle.fr}}
+\magcours{cours_matiere={maths},
+          cours_niveau={mpsi},
+          cours_chapitre_numero={1},
+          cours_chapitre={Levenshtein, Hamming}}
+\magmisenpage{}
+\maglieudiff{}
+\magprocess
+
+\begin{document}
+%BEGIN_BOOK
+
+\section{Distance de Levenshtein}
+
+Un séquence d'\textsc{ADN} est une succession de nucléotides pouvant être de 4 types
+distincts~: adénine (A), cytosine (C), guanine (G) et thymine (T). Dans ce problème, une séquence d'\textsc{ADN}
+sera donc représentée par une chaine de caractères composée uniquement des lettres A, C, G et T;
+on notera $\mathcal{S}$ l'ensemble de ces séquences.  Étant donnée
+une séquence $u\in\mathcal{S}$, on appelle \emph{opération élémentaire d'édition} l'une des opérations suivantes~:
+\begin{itemize}
+\item La suppression d'une lettre.
+\item L'insertion d'une lettre.
+\item La substitution d'une lettre par une autre lettre.
+\end{itemize}
+Ces opérations élémentaires permettent par exemple de transformer la séquence $u={\rm ATGC}$ en $v={\rm AAC}$ à
+l'aide de 2 opérations élémentaires.
+\[{\rm ATGC}
+  \xrightarrow[\text{Suppression du T}]{}  {\rm AGC}
+  \xrightarrow[\text{Substitution du G par A}]{} {\rm AAC}.\]
+Étant données deux séquences $u$ et $v$, il est bien entendu toujours possible de transformer $u$ et $v$
+à l'aide d'une succession d'opérations élémentaires d'édition. On appelle \emph{distance de Levenshtein} entre
+$u$ et $v$ et on note ${\rm d}(u, v)$, le nombre minimal d'opérations élémentaires permettant de passer
+de $u$ à $v$.
+
+\begin{questions}
+\question Montrer que ${\rm d}$ est une distance, c'est-à-dire que
+  \begin{eqnarray*}
+  \forall u,v\in\mathcal{S},& & {\rm d}(u, v) = 0 \ssi u=v\\
+  \forall u,v\in\mathcal{S},& & {\rm d}(u, v) = {\rm d}(v, u)\\
+  \forall u,v,w\in\mathcal{S},& & {\rm d}(u, w) \leq {\rm d}(u, v) + {\rm d}(v, w).
+  \end{eqnarray*}
+\question Soit $u$ et $v$ des séquences de longueurs respectives $n$ et $m$. Montrer que
+  \[\abs{m-n}\leq {\rm d}(u, v)\leq m + n.\]
+\enonce Pour tout $i\in\intere{0}{n}$, on note $u[0:i]$ la sous-séquence de $u$ formée des $i$ premières
+  lettres de $u$. On définit de même $v[0:j]$ pour tout $j\in\intere{0}{m}$ et on pose ${\rm D}_{i,j}\defeq
+  {\rm d}(u[0:i], v[0:j])$. Le but de ce problème est de calculer efficacement
+  ${\rm d}(u,v)={\rm D}_{n, m}$.
+\question Combien valent respectivement ${\rm D}_{i, 0}$ et ${\rm D}_{0, j}$~?
+\question Pour $i\in\intere{1}{n}$ et $j\in\intere{1}{m}$, on note $\alpha_{i,j}$ le nombre égal à 2 si
+  $u_i\neq v_j$ et à 0 dans le cas contraire ($u_i$ et $u_j$ représentant respectivement la lettre d'indice
+  $i$ de $u$ et la lettre d'indice $j$ de $v$). Montrer que
+  \[{\rm D}_{i, j}=\min({\rm D}_{i-1, j-1}+\alpha_{i,j}, {\rm D}_{i-1, j}+1, {\rm D}_{i, j-1}+1).\]
+\question En déduire une fonction \verb!dist_dynamique(u: str, v: str) -> list[list[int]]! prenant
+  en entrée deux séquences $u$ et $v$ et renvoyant la matrice des $({\rm D}_{i,j})_{0\leq i\leq n, 0\leq j\leq m}$.
+  On commencera par remplir la première colonne et la première ligne de la matrice grâce à la question 3, puis
+  on remplira la matrice ligne par ligne grâce à la relation démontrée en question 4.
+\question En déduire une fonction \verb!levenshtein(u: str, v: str) -> int! calculant la distance de Levenshtein
+  entre $u$ et $v$.
+\question La fonction précédente nécessite de stocker $(n+1)(m+1)$ entiers en mémoire. Améliorer votre
+ programme pour qu'il soit nécessaire de stocker seulement $\min(n, m)+1$ entiers dans un tableau.
+\end{questions}
+
+
+\section{Nombres de Hamming}
+Les nombres de Hamming sont les entiers naturels non nuls dont les seuls facteurs premiers éventuels
+sont 2, 3, et 5~:
+\[1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, \ldots\]
+Le but de cet exercice est de les générer de manière croissante. Évidemment, on peut parcourir un à un
+tous les entiers en testant à chaque fois si ceux-ci sont des entiers de Hamming, mais cette démarche
+montre très vite des limites~: songez que le $1\ 999^{\rm e}$ entier de Hamming est égal à $8\ 100\ 000\ 000$
+et le $2\ 000^{\rm e}$ à $8\ 153\ 726\ 976$; il faudrait tester plus de 53 millions de nombres avant
+d'augmenter notre liste d'un élément. On adopte donc la démarche suivante~: on utilise trois files
+$f_2$, $f_3$, $f_5$ contenant initialement le nombre 1, et on suit la démarche suivante~:
+\begin{itemize}
+\item On détermine le plus petit des trois têtes de file, que l'on note $k$ et que l'on ajoute à notre liste.
+\item On retire cet élément des files où il se trouve.
+\item On insère en queues des files $f_2$, $f_3$ et $f_5$ les entiers $2k$, $3k$ et $5k$.
+\end{itemize}
+Vous l'avez compris~: cette démarche utilise le fait que tout nombre de Hamming différent de 1 est le produit
+par 2, 3 ou 5 d'un nombre plus petit. On utilisera pour cela un type \verb!queue[int]! et ses fonctions associées
+\begin{pythoncode}
+queue_new() -> queue[int]
+queue_is_empty(q: queue[int]) -> bool
+queue_push(q: queue[int], x: int) -> NoneType
+queue_pop(q: queue[int]) -> int
+queue_peek(q: queue[int]) -> int
+\end{pythoncode}
+
+\begin{questions}
+\question Rédiger une fonction \verb!hamming(n: int) -> list[int]! générant les $n$ premiers nombres de Hamming.
+\question L'inconvénient de cette démarche est que le même nombre peut se retrouver dans plusieurs des 3 files.
+  Modifier votre fonction pour que ce ne soit plus le cas.
+\end{questions}
+
+%END_BOOK
+\end{document}

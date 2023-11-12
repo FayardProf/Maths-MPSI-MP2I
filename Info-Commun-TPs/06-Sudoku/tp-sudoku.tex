@@ -1,0 +1,300 @@
+\documentclass{magnolia}
+
+\magtex{tex_driver={pdftex}}
+\magfiche{document_nom={Fonctions et procédures},
+          auteur_nom={François Fayard},
+          auteur_mail={fayard.prof@gmail.com}}
+\magcours{cours_matiere={maths},
+          cours_niveau={mpsi},
+          cours_chapitre_numero={5},
+          cours_chapitre={TP Python~: Sudoku}}
+\magmisenpage{misenpage_presentation={tikzvelvia},
+              misenpage_format={a4},
+              misenpage_nbcolonnes={1},
+              misenpage_preuve={non},
+              misenpage_sol={non}}
+\maglieudiff{lieu_lycee={Aux Lazaristes},
+             lieu_classe={Sup},
+             lieu_annee={2020--2021}}
+             
+             
+\usepackage{tikz}
+\usepackage{tkz-tab}
+
+
+\magprocess
+
+\begin{document}
+
+
+%BEGIN_BOOK
+
+\tikzset{math3d/.style={x={(-0.353cm,-0.353cm)},z={(0cm,1cm)},y={(1cm,0cm)}}}
+
+\tikzset{
+xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
+xmax/.store in=\xmax, xmax/.default=3, xmin=3,
+ymin/.store in=\ymin, ymin/.default=-3, ymin=-3,
+ymax/.store in=\ymax, ymax/.default=-3, ymax=-3,
+}
+
+\usetikzlibrary{matrix}
+
+\newcommand{\grille}{\draw[help lines] (\xmin,\ymin) grid (\xmax,\ymax);}
+
+\newcommand{\axes}{%
+\draw[->] (\xmin,0)--(\xmax,0);
+\draw[->] (0,\ymin)--(0,\ymax);
+\draw[->][very thick] (0,0)--(1,0);
+%\draw (1 , 0) node[below] {$1$};
+%\draw (0.5 , 0) node[below] {$\vec{i}$};
+\draw (0.5 , 0) node[below] {$\vec{\imath}$};
+\draw[->] [very thick](0,0)--(0,1);
+%\draw (0,0.5) node[left] {$\vec{j}$};
+\draw (0 , 0.5) node[left] {$\vec{\jmath}$};
+%\draw (0,1) node[left] {$1$};
+%\draw (0,0) node[below left]{$O$};
+}
+
+\newcommand{\axesbis}{%
+\draw[->] (\xmin,0)--(\xmax,0)node[below]{$x$};
+\draw[->] (0,\ymin)--(0,\ymax)node[left]{$y$};
+}
+\newcommand{\aaa}{\hphantom{\hspace{0.5cm}}\vphantom{9}}
+
+\section{Règles du Sudoku}
+
+Le sudoku est un jeu de logique de la famille des carrés latins. L'origine de son nom vient des deux mots japonais \og su \fg{} qui signifie chiffre et \og doku \fg{} qui signifie seul.\\
+
+On dispose d'une grille de $9\times 9=81$ cases divisées en $3\times 3=9$ régions. Initialement, certaines cases de la grille sont préremplies par des chiffres compris entre
+$1$ et $9$. Le but du jeu est de remplir les cases restantes avec des chiffres compris
+entre $1$ et $9$ en respectant les contraintes suivantes:
+\begin{itemize}
+\item Chaque chiffre doit apparaître une seule fois dans chaque ligne.
+\item Chaque chiffre doit apparaître une seule fois dans chaque colonne.
+\item Chaque chiffre doit apparaître une seule fois dans chaque région.
+\end{itemize}
+% \bigskip
+% La grille que l'on va compléter est la suivante~:
+
+% \begin{center}
+% \begin{tikzpicture}[xmin=-12,xmax=12,ymin=-12,ymax=12,scale=0.5]
+% %\tkzInit[xmin=\xmin, xmax=\xmax, ymin=\ymin, ymax=\ymax]
+% %\tkzGrid
+% %\tkzAxeXY
+% \matrix(M)[matrix of math nodes, nodes = {minimum size = 0.8cm}]at(0,0)
+% {\aaa&8&\aaa&\aaa&4&1&\aaa&\aaa&9\\
+% 1&6&\aaa&\aaa&\aaa&5&\aaa&\aaa&\aaa\\
+% 4&\aaa&\aaa&6&\aaa&\aaa&\aaa&\aaa&\aaa\\
+% \aaa&1&8&5&\aaa&\aaa&6&\aaa&\aaa\\
+% \aaa&\aaa&2&\aaa&\aaa&\aaa&7&\aaa&\aaa\\
+% \aaa&\aaa&5&\aaa&\aaa&9&3&8&\aaa\\
+% \aaa&\aaa&\aaa&\aaa&\aaa&7&\aaa&\aaa&3\\
+% \aaa&\aaa&\aaa&9&\aaa&\aaa&\aaa&7&8\\
+% 9&\aaa&\aaa&1&8&\aaa&\aaa&2&\aaa\\
+% };
+% \foreach \j in {1,2,...,9}
+% {\draw(M-1-\j.north west)--(M-9-\j.south west);}
+% \foreach \i in {1,2,...,9}
+% {\draw(M-\i-1.south west)--(M-\i-9.south east);}
+% \draw(M-1-1.north west)--(M-1-9.north east);
+% \draw[very thick](M-1-1.north west)--(M-9-1.south west);
+% \draw[very thick](M-1-1.north west)--(M-1-9.north east);
+% \foreach \j in{3,6,9}
+% {\draw[very thick](M-1-\j.north east)--(M-9-\j.south east);}
+% \foreach \i in{3,6,9}
+% {\draw[very thick](M-\i-1.south west)--(M-\i-9.south east);}
+% %\draw[->,>=latex](-9.5,9.4)--(-9.5,-9.4)node[below]{$i$};
+% %\draw(-10,8)node{$0$};
+% %\draw(-10,6)node{$1$};
+% %\draw(-10,4)node{$2$};
+% %\draw[->,>=latex](-11,9.4)--(-11,-9.4)node[below]{$a$};
+% %\draw(-12,6)node{\Large{$0$}};
+% %\draw(-12,0)node{\Large{$1$}};
+% %\draw(-12,-6)node{\Large{$2$}};
+% %\draw[->,>=latex](-9.4,9.6)--(9,9.6)node[right]{$j$};
+% %\draw(-8,10)node{$0$};
+% %\draw(-6,10)node{$1$};
+% %\draw(-4,10)node{$2$};
+% %\draw[->,>=latex](-9.4,11)--(9.4,11)node[right]{$b$};
+% %\draw(-6,12)node{\Large{$0$}};
+% %\draw(0,12)node{\Large{$1$}};
+% %\draw(6,12)node{\Large{$2$}};
+% \end{tikzpicture}
+% \end{center}
+
+% \section{Modélisation}
+\bigskip
+
+La grille de sudoku est modélisée par une matrice carrée de 9 par 9,
+à l'aide d'une liste de listes. Pour repérer une case dans la grille, on utilise ses coordonnées $(i,j)$ comme dans le schéma ci-dessous où $0\leq i,j < 9$. Une région est, quant à elle, définie par ses coordonnées $(a,b)$ où $0\leq a,b<3$.
+
+\begin{center}
+\begin{tikzpicture}[xmin=-12,xmax=12,ymin=-12,ymax=12,scale=0.4]
+%\tkzInit[xmin=\xmin, xmax=\xmax, ymin=\ymin, ymax=\ymax]
+%\tkzGrid
+%\tkzAxeXY
+\matrix(M)[matrix of math nodes, nodes = {minimum size = 0.8cm}]at(0,0)
+{\aaa&8&\aaa&\aaa&4&1&\aaa&\aaa&9\\
+1&6&\aaa&\aaa&\aaa&5&\aaa&\aaa&\aaa\\
+4&\aaa&\aaa&6&\aaa&\aaa&\aaa&\aaa&\aaa\\
+\aaa&1&8&5&\aaa&\aaa&6&\aaa&\aaa\\
+\aaa&\aaa&2&\aaa&\aaa&\aaa&7&\aaa&\aaa\\
+\aaa&\aaa&5&\aaa&\aaa&9&3&8&\aaa\\
+\aaa&\aaa&\aaa&\aaa&\aaa&7&\aaa&\aaa&3\\
+\aaa&\aaa&\aaa&9&\aaa&\aaa&\aaa&7&8\\
+9&\aaa&\aaa&1&8&\aaa&\aaa&2&\aaa\\
+};
+\foreach \j in {1,2,...,9}
+{\draw(M-1-\j.north west)--(M-9-\j.south west);}
+\foreach \i in {1,2,...,9}
+{\draw(M-\i-1.south west)--(M-\i-9.south east);}
+\draw(M-1-1.north west)--(M-1-9.north east);
+\draw[very thick](M-1-1.north west)--(M-9-1.south west);
+\draw[very thick](M-1-1.north west)--(M-1-9.north east);
+\foreach \j in{3,6,9}
+{\draw[very thick](M-1-\j.north east)--(M-9-\j.south east);}
+\foreach \i in{3,6,9}
+{\draw[very thick](M-\i-1.south west)--(M-\i-9.south east);}
+\draw[->,>=latex](-9.5,9.4)--(-9.5,-9.4)node[below]{$i$};
+\draw(-10,8)node{$0$};
+\draw(-10,6)node{$1$};
+\draw(-10,4)node{$2$};
+\draw[->,>=latex](-11,9.4)--(-11,-9.4)node[below]{$a$};
+\draw(-12,6)node{\Large{$0$}};
+\draw(-12,0)node{\Large{$1$}};
+\draw(-12,-6)node{\Large{$2$}};
+\draw[->,>=latex](-9.4,9.6)--(9,9.6)node[right]{$j$};
+\draw(-8,10)node{$0$};
+\draw(-6,10)node{$1$};
+\draw(-4,10)node{$2$};
+\draw[->,>=latex](-9.4,11)--(9.4,11)node[right]{$b$};
+\draw(-6,12)node{\Large{$0$}};
+\draw(0,12)node{\Large{$1$}};
+\draw(6,12)node{\Large{$2$}};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+\item Récupérez le fichier \texttt{grille.py}. Dans ce fichier, vous trouverez la matrice \texttt{g}, nous donnant un exemple de grille à traiter. Les cases vides sont symbolisées par des $0$. Copiez cette matrice dans votre script.
+\item Quelle doit être la valeur de \texttt{g[3][2]}? Vérifiez sur votre machine.
+\item Écrire une fonction \verb!cases_vides(g: list[list[int]]) -> list[tuple[int, int]]!  prenant pour argument une grille \verb!g! et renvoyant la liste des coordonnées $(i,j)$
+des cases vides. Dans cet algorithme, le parcours de la grille se fera ligne par ligne.
+\item Écrire une fonction \verb!compat_ligne(g: list[list[int]], i: int, c: int) -> bool!
+   prenant pour argument une grille $g$, une ligne $i$ et un chiffre
+   $c$ compris entre $1$ et $9$, et renvoyant \verb!True! s'il est possible
+   d'ajouter le chiffre $c$ sur une des cases vides de la ligne $i$, tout en satisfaisant
+   les contraintes de ligne du plateau. Autrement dit, cette fonction doit renvoyer
+   \verb!True! si $c$ est différent de toutes les autres chiffres présents sur la ligne
+   $i$, et \verb!False! sinon.
+\item Écrire une fonction analogue
+  \verb!compat_colonne(g: list[list[int]], j: int, c: int) -> bool! pour les colonnes,
+  ainsi qu'une fonction
+  \verb!compat_region(g: list[list[int]], a: int, b: int, c: int) -> bool! pour les
+  régions.
+\item En utilisant la division entière en Python, écrire une fonction
+  \verb!region(i: int, j: int) -> tuple[int, int]! prenant pour arguments les
+  coordonnées $(i,j)$ d'une case et renvoyant les coordonnées $(a,b)$ de la région
+  dans laquelle elle se trouve.
+\item Déduire des questions précédentes une fonction
+  \begin{center}
+    \verb!compat(g: list[list[int]], i: int, j: int, c: int) -> bool!
+  \end{center}
+  prenant pour
+  arguments une grille $g$, les coordonnées $(i,j)$ d'une case vide
+  de la grille et un chiffre $c$ entre 1 et 9 et renvoyant \verb!True! s'il est
+  possible d'ajouter le chiffre $c$ sur la case vide  de coordonnées $(i,j)$ tout
+  en respectant les contraintes du Sudoku portant sur les lignes, les colonnes et
+  les régions.
+\end{enumerate}
+
+
+\section{Le backtracking}
+
+Il existe de nombreuses méthodes de résolution du Sudoku. Les méthodes simulant le raisonnement humain sont efficaces mais difficiles à programmer. La méthode du \emph{retour arrière systématique} ou \emph{backtracking} est préférable~: elle teste
+toutes les possibilités de remplissage. Étant donnée la puissance des ordinateurs actuels, une grille solution est généralement  donnée en quelques millisecondes. Détaillons cette
+méthode pour le jeu du Sudoku.\\
+
+On commence par déterminer la liste \verb!cv! des cases initialement vides de la grille.
+Ensuite, on teste
+la possibilitée de placer un 1 dans la première case vide. Si cette valeur ne rentre
+pas en conflit avec les chiffres déjà présents, on passe à la case vide suivante.
+Sinon, on teste si 2 convient, puis 3, etc. Si aucun chiffre entre 1 et 9 ne convient
+pour remplir une case, nous sommes face à une incompatibilité et il est alors
+nécessaire de revenir en arrière dans la liste de nos cases vides. On tente alors de
+la remplir avec une nouvelle valeur, plus grande que celle tentée précédemment.\\
+
+Concrètement, supposons qu'on a déjà rempli les $k$ premières cases vides de la liste
+\verb!cv!. La prochaine case vide à traiter dont les coordonnées sont données par
+\verb!cv[k]! contient une valeur $c$.
+\begin{itemize}
+\item Si $c=0$, c'est que nous venons juste de tester une nouvelle valeur pour la
+  case vide d'indice $k-1$.
+\item Si $c\in\intere{1}{9}$, c'est que nous venons de réaliser que cette
+  valeur a conduit à une incompatibilité en tentant de remplir les cases vides
+  suivantes. 
+\end{itemize}
+\medskip
+
+Dans les deux cas, nous allons tenter de remplir cette case avec un chiffre
+strictement supérieur à $c$~: on commence par $c+1$, puis $c+2$, jusqu'à 9.
+\begin{itemize}
+\item Si on trouve un chiffre compatible avec le reste de la grille, on place
+  ce chiffre dans la grille, puis on passe à la case vide d'indice $k+1$.
+\item Si aucun chiffre n'est compatible, c'est que nous sommes face à une incompatibilité
+  et qu'il faut revenir en arrière pour tenter un nouveau chiffre. On place donc
+  le chiffre 0 dans la case pour signifier qu'elle est de nouveau vide et on passe à la case
+  initialement vide d'indice $k-1$.
+\end{itemize}
+\medskip
+
+Si on note $n$ la longueur de la liste \verb!cv!, l'algorithme peut se terminer de deux
+manières distinctes~:
+\begin{itemize}
+\item Si $k=n$, c'est que la grille a été entièrement remplie et donc qu'une solution a été trouvée.
+\item Si $k=-1$, c'est qu'aucune solution n'a été trouvée. L'algorithme étant exhaustif,
+  cela prouve qu'il n'est pas possible de compléter la grille.
+\end{itemize}
+
+
+\begin{enumerate}
+\setcounter{enumi}{8}
+\item Écrire une fonction
+  \begin{center}
+  \verb!prochain(g: list[list[int]], cv: list[tuple[int, int]], k: int) -> int!
+  \end{center}
+  qui prend une telle grille où les $k$ premières cases vides de la grille $g$ ont
+  été remplies, où \verb!cv! contient la liste des coordonnées des cases
+  initialement vides et qui traite comme l'on vient de voir la case
+  de coordonnées \verb!cv[k]!. Cette fonction devra renvoyer l'index de la prochaine
+  case à traiter, qui sera soit $k+1$ si on a trouvé un chiffre compatible, soit
+  $k-1$ si une incompatibilité a été trouvée.
+\item Écrire la fonction \verb!solution(g: list[list[int]]) -> bool!
+  prenant en entrée une grille de Sudoku $g$ et renvoyant \verb!True! s'il est possible
+  de la résoudre (et en transformant au passage la grille $g$ en une solution)
+  et renvoyant \verb!False! dans le cas contraire.
+\item A l'aide de la macro \verb!%timeit! de IPython, déterminer le temps de
+  nécessaire à la résolution de la grille proposée en exemple.
+\end{enumerate}
+
+
+% \section{Partie facultative}
+
+% \begin{enumerate}
+% \item \'Ecrire une fonction \texttt{grille} d'argument une matrice \texttt{M} qui renvoie une chaîne de caractères représentant la grille de sudoku associée à \texttt{M}.
+
+% Par exemple, en écrivant \texttt{print(grille(M))} dans le script avec la matrice \texttt{M} initiale (non remplie), on voit s'afficher après exécution:
+% \begin{center}
+% \includegraphics[width=7cm]{../../Commun/Images/python-tps-sudoku.png}
+% \end{center}
+% \item \'Ecrire une fonction \texttt{est\_un\_sudoku} d'arguments une matrice \texttt{M} (représentant une grille de sudoku remplie). Cette fonction renverra un booléen permettant de savoir si \texttt{M} remplit bien les conditions pour être un sudoku.
+
+% \emph{Indication}: On pourra utiliser des fonctions intermédiaires.
+
+% \end{enumerate}
+
+
+%END_BOOK
+ 
+%\end{enumerate}
+\end{document}
