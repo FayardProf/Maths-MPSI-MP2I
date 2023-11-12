@@ -30,8 +30,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[]
-\ProvidesClass{magnolia}[4/12/2006 Francois Fayard
-                         Classe magnolia.cls
+\ProvidesClass{magnoliaold}[4/12/2006 Francois Fayard
+                         Classe magnoliaold.cls
                          Projet Velvia pour le libre enseignement]
 %
 % Paramètres de base
@@ -70,7 +70,7 @@
                           %%   est dans latex/tools
   geometry,               %% Pour le format des pages
                           %%   n'est ni dans latex/base ou latex/tools
-  multicol,caption,minitoc,tikz}               %% Pour afficher du texte sur plusieurs colonnes
+  multicol,caption,minitoc,tikz,listings}               %% Pour afficher du texte sur plusieurs colonnes
                           %%   est dans latex/tools
 \usepackage{pdftricks}
 \usepackage{bbding}
@@ -89,8 +89,8 @@
 \usepackage{algpseudocode}
 \usepackage{siunitx}
 \usepackage{tabularx}
-\usepackage{mdframed}
 \floatname{algorithm}{Algorithme}
+
 \algrenewcommand\algorithmicwhile{\textbf{tant que}}
 \algrenewcommand\algorithmicdo{\textbf{faire}}
 \algrenewcommand\algorithmicend{\textbf{fin}}
@@ -103,8 +103,10 @@
 \algrenewcommand\algorithmicreturn{\textbf{renvoyer}}
 \algrenewcommand\algorithmicrequire{\textbf{Entrées :}}
 \algrenewcommand\algorithmicensure{\textbf{Sorties :}}
-\usepackage{minted}
-\usepackage{etoolbox}
+
+% \usepackage{minted}
+% \usemintedstyle{xcode}
+% \newenvironment{pythoncode}{\VerbatimEnvironment\begin{minted}[xleftmargin=20pt,linenos]{python}}{\end{minted}}
 \usepackage{tkz-tab}
 \usepackage{tkz-graph}
 \usetikzlibrary{backgrounds, shadows, fit, positioning,arrows,automata}
@@ -112,6 +114,53 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{matrix}
 \usetikzlibrary{arrows.meta}
+\lstset{%
+  frame            = tb,    % draw frame at top and bottom of code block
+  tabsize          = 2,     % tab space width
+	% xleftmargin = 0.5cm,
+	% frameround = fttt,
+	numbersep = 5pt,
+	numberstyle = \tiny,
+	numbers = none,
+  % numbers          = left,  % display line numbers on the left
+  framesep         = 3pt,   % expand outward
+  framerule        = 0.4pt, % expand outward 
+  commentstyle     = \color{colorLazoPink1},      % comment color
+  keywordstyle     = \color{blue},       % keyword color
+  stringstyle      = \color{red},    % string color
+  backgroundcolor  = \color{colorLazoYellow1Light}, % backgroundcolor color
+  showstringspaces = false,              % do not mark spaces in strings
+  emph={int,char,double,float,unsigned,void,bool,uint64_t,T,uint32_t,set,uint8_t,bucket},
+  emphstyle={\color{blue}},
+  basicstyle       = \ttfamily,
+  breaklines       = true,
+  extendedchars    = true,
+  literate         = {À}{{\`A}}1 {à}{{\`a}}1 {â}{{\ˆa}}1 {é}{{\'e}}1 {è}{{\'e}}1 {ê}{{\^e}}1 {ù}{{\`u}}1 {Ç}{{\c{C}}}1 {ç}{{\c{c}}}1,
+	escapeinside={(*@}{@*)}
+}
+% \newenvironment{pythoncode}{\begin{lstlisting}[language=python]}{\end{lstlisting}}
+\lstnewenvironment{pythoncode}{\lstset{language=python}}{}
+\lstnewenvironment{pythoncodeline}{\lstset{language=python,numbers=left,stepnumber=1}}{}
+\lstnewenvironment{ccode}{\lstset{language=c,numbers=left,stepnumber=1}}{}
+\lstnewenvironment{sqlcode}{\lstset{language=sql}}{}
+\lstnewenvironment{asmcode}{\lstset{language=[x86masm]Assembler}}{}
+\lstnewenvironment{nasmcode}{\lstset{language=[x86masm]Assembler}}{}
+\lstnewenvironment{camlcode}{\lstset{language=caml,numbers=left,stepnumber=1}}{}
+\lstnewenvironment{shellcode}{\lstset{language=bash}}{}
+% \newenvironment{pythoncode}{\verbatim}{\endverbatim}
+
+\newcommand{\nom}{}%
+
+\usepackage{float}
+\restylefloat{table}
+\usepackage{booktabs}
+%\usepackage{tabularx, multirow}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+\usepackage{multirow}
+\usepackage{array}
+\newcommand{\from}{\leftarrow}
+  
+
 \definecolor{colorLazoBlue1}{RGB}{1,40,174}
 \definecolor{colorLazoBlue1Light}{RGB}{227,243,255}
 \definecolor{colorLazoBlue2}{RGB}{92,134,195}
@@ -126,29 +175,6 @@
 \definecolor{colorLazoYellow1Light}{RGB}{255,248,230}
 \definecolor{colorLazoYellow2}{RGB}{243,212,128}
 \definecolor{colorLazoYellow2Light}{RGB}{253,247,232}
-\BeforeBeginEnvironment{minted}{\begin{tcolorbox}[colback=colorLazoYellow1Light]}
-\AfterEndEnvironment{minted}{\end{tcolorbox}}
-\newminted{ocaml}{}
-\newmintinline{ocaml}{}
-\newminted{c}{}
-\newmintinline{c}{}
-\newminted{python}{}
-\newmintinline{python}{}
-
-
-\newcommand{\nom}{}%
-
-\usepackage{float}
-\restylefloat{table}
-\usepackage{booktabs}
-%\usepackage{tabularx, multirow}
-\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
-\usepackage{multirow}
-\usepackage{array}
-\newcommand{\from}{\leftarrow}
-  
-
-
 %
 %
 \ifthenelse{\boolean{mag@article}}{%
@@ -158,7 +184,8 @@
 }{%
   \newcommand{\magtoc}{\minitoc}%
   %\setcounter{secnumdepth}{3}%
-  \newcommand{\magsection}{\subsection}%
+  % \newcommand{\magsection}{\subsection}%
+  \newcommand{\magsection}[1]{\subsubsection*{\textit{\Large #1}}}%
   \newcommand{\magsubsection}[1]{\subsubsection*{\textit{#1}}}%
   \setcounter{minitocdepth}{2}%
   \dominitoc
@@ -171,7 +198,6 @@
 \setcounter{numeroexercicecours}{1}
 
 
-% \newcommand{\hidemesometimes}[1]{#1}
 \newcommand{\hidemesometimes}[1]{\relax}
 
 
@@ -489,7 +515,7 @@
                             %%   dans les corrigés)
       pifont,               %% Utile pour la liste itemize des remarques
       color,                %% semble utile à fancybox
-      % fancybox,             %% Pour afficher des textes encadrés
+      fancybox,             %% Pour afficher des textes encadrés
       stmaryrd}             %% utile par exemple pour faire des intervalles
                             %%   d'entiers.
       % \setlength{\shadowsize}{2pt}
@@ -688,12 +714,11 @@
           enlarge right by=-\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
           width=\paperwidth,left=1in+\hoffset+\oddsidemargin,
           right=\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth,top=0.6cm,bottom=0.6cm,
-          % overlay={\node[fill=colorLazoPink2,draw=colorLazoBlue2Light,line width=0.15cm,
-          %   inner sep=0pt,text width=1.7cm,minimum height=1.7cm,align=center,
-          %   font=\color{white}\sffamily\bfseries\fontsize{30}{36}\selectfont] 
-          %   (chapname) at ([xshift=-4cm,yshift=-0.6cm]frame.north east) {\mag@resume@numero};
-          %   \node[font=\small,anchor=south,inner sep=2pt] at (chapname.north) {\MakeUppercase\ };}
-            ]
+          overlay={\node[fill=colorLazoPink2,draw=colorLazoBlue2Light,line width=0.15cm,
+            inner sep=0pt,text width=1.7cm,minimum height=1.7cm,align=center,
+            font=\color{white}\sffamily\bfseries\fontsize{30}{36}\selectfont] 
+            (chapname) at ([xshift=-4cm,yshift=-0.6cm]frame.north east) {\mag@resume@numero};
+            \node[font=\small,anchor=south,inner sep=2pt] at (chapname.north) {\MakeUppercase\ };}]
         \mag@resume@chapitre%
         \end{tcolorbox}}{}
       }{% For the book
@@ -1809,10 +1834,10 @@
 {
   \end{list}
 }
-%
 
 
 \newcommand{\qcm}[1]{\square\ \text{\textbf{#1.}}\ }
+%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                            Gestion des maths                                %

@@ -1,4 +1,4 @@
-\documentclass{magnoliaold}
+\documentclass{magnolia}
 
 \magtex{tex_driver={pdftex},
         tex_packages={xypic}}
@@ -364,7 +364,7 @@ Out[2]: 2.0000009999243673
 \verb_dichotomie(f: function, a: float, b: float, y: float, eps: float) -> tuple[float, float]_ qui prend en argument
 une fonction continue $f$ telle que $f(a)$ et $f(b)$ sont de part et d'autre de $y$ et renvoyant un couple $(u,v)$ tel que $0\leq v-u\leq\epsilon$ et tel qu'il existe $x\in\interf{u}{v}$ tel que $f(x)=y$.\\
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{../../commun/images/python-cours-dichotomie}
+  \includegraphics[width=0.9\textwidth]{../../Commun/Images/python-cours-dichotomie}
   \end{center}
 On utilisera pour cela
 l'algorithme de \emph{dichotomie} qui consiste à définir deux suites $(a_n)$ et $(b_n)$ en
@@ -1077,16 +1077,16 @@ de la pile d'appels}, ou de \emph{stackoverflow} en anglais.
 Nous allons continuer en programmant le flocon de Von Koch. La génération 0
 de ce flocon est un segment de longueur $a$,
 \begin{center}
-\includegraphics[width=0.4\textwidth]{../../commun/images/python-cours-koch-0}
+\includegraphics[width=0.4\textwidth]{../../Commun/Images/python-cours-koch-0}
 \end{center}
 la première génération est la figure suivante, le \og triangle \fg central étant
 équilatéral,
 \begin{center}
-\includegraphics[width=0.4\textwidth]{../../commun/images/python-cours-koch-1}
+\includegraphics[width=0.4\textwidth]{../../Commun/Images/python-cours-koch-1}
 \end{center}
 puis la seconde génération est~:
 \begin{center}
-\includegraphics[width=0.4\textwidth]{../../commun/images/python-cours-koch-2}
+\includegraphics[width=0.4\textwidth]{../../Commun/Images/python-cours-koch-2}
 \end{center}
 Le but est d'écrire un programme dessinant la $n$-ième génération du flocon de
 Von Koch de longueur $a$. On remarque évidemment le caractère récursif de sa
@@ -1117,14 +1117,14 @@ def koch(a, n):
 \end{pythoncodeline}
 Le tracé de la $4^e$ génération nous donne
 \begin{center}
-\includegraphics[width=0.4\textwidth]{../../commun/images/python-cours-koch-4}
+\includegraphics[width=0.4\textwidth]{../../Commun/Images/python-cours-koch-4}
 \end{center}
 Ce programme récursif est l'occasion de présenter l'arbre d'appels d'une fonction
 récursive. Au sommet, nous avons la racine qui représente l'appel initial à notre
 fonction. Cette fonction va elle-même s'appeler plusieurs fois et donc
 générer des appels représentés dans l'arbre avec une profondeur de 1.
 \begin{center}
-\includegraphics[width=0.6\textwidth]{../../commun/images/python-cours-arbre-appel}
+\includegraphics[width=0.6\textwidth]{../../Commun/Images/python-cours-arbre-appel}
 \end{center}
 Ces fonctions s'appellent elles-mêmes plusieurs fois, et ainsi de suite.\\
 

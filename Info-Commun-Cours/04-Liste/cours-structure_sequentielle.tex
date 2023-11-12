@@ -1,4 +1,4 @@
-\documentclass{magnoliaold}
+\documentclass{magnolia}
 
 \magtex{tex_driver={pdftex}}
 \magfiche{document_nom={Cours Python sur les listes},
@@ -22,7 +22,7 @@
 
 \begin{document}
 %BEGIN_BOOK
-\hfill\includegraphics[width=0.45\textwidth]{../../Commun/Images/python-cours-organisation-gaston}
+%\hfill\includegraphics[width=0.45\textwidth]{../../Commun/Images/python-cours-organisation-gaston}
 
 \magtoc
 
@@ -38,13 +38,13 @@ la mémoire de l'ordinateur. En informatique, une telle organisation est appelé
 Prenons l'exemple d'une collection de pantalons que l'on souhaite ranger dans notre placard. La manière
 la plus courante de les organiser est de les placer en \emph{pile} comme ci-dessous~:
 \begin{center}
-\includegraphics[width=0.4\textwidth]{../../commun/images/python-cours-jeans-pile}
+\includegraphics[width=0.4\textwidth]{../../Commun/Images/python-cours-jeans-pile}
 \end{center}
 Une autre manière de les ranger est d'avoir une succession de compartiments
 dans lesquels on peut ranger chaque pantalon. En informatique, une telle organisation est appelée
 un \emph{tableau}.
 \begin{center}
-\includegraphics[width=0.3\textwidth]{../../commun/images/python-cours-jeans-tableau}
+\includegraphics[width=0.3\textwidth]{../../Commun/Images/python-cours-jeans-tableau}
 \end{center}
 Chaque organisation a ses avantages et ses inconvénients~:
 \begin{itemize}
@@ -60,7 +60,7 @@ des deux qualités essentielles des structures de données précédentes~: la po
 accès direct à chaque objet et celle d'ajouter facilement un objet en fin de collection. L'analogie la plus
 proche en terme de rangement est la suivante
 \begin{center}
-\includegraphics[width=0.3\textwidth]{../../commun/images/python-cours-jeans-tabdyn}
+\includegraphics[width=0.3\textwidth]{../../Commun/Images/python-cours-jeans-tabdyn}
 \end{center}
 où l'on imagine que les pantalons doivent toujours être placés sur les tiges situées les plus à gauche.
 
@@ -657,7 +657,7 @@ dans la partie déjà triée en effectuant des échanges successifs qui font rem
 petit à petit la carte à insérer à sa position.
 
 \begin{center}
-\includegraphics[width=0.7\textwidth]{../../commun/images/python-cours-insertion_carte}\\
+\includegraphics[width=0.7\textwidth]{../../Commun/Images/python-cours-insertion_carte}\\
 Insertion de la carte 5 dans une main déjà triée
 \end{center}
 \noindent Par exemple,
@@ -737,7 +737,7 @@ Si nous revenons à notre analogie où une liste fonctionne comme un porte-panta
 l'image suivante correspond à une liste de 3 éléments~:
 
 \begin{center}
-\includegraphics[width=0.3\textwidth]{../../commun/images/python-cours-jeans-tabdyn}
+\includegraphics[width=0.3\textwidth]{../../Commun/Images/python-cours-jeans-tabdyn}
 \end{center}
 \noindent
 Il est aisé d'ajouter un quatrième pantalon à côté du dernier. Les listes permettent
@@ -1021,7 +1021,7 @@ In [12]: a = 7
 crée un objet de type \verb_int_ dont la valeur est 7 et associe la variable $a$ à cet objet.
 
 \begin{center}
-\includegraphics[width=0.25\textwidth]{../../commun/images/python-cours-tutor-1}
+\includegraphics[width=0.25\textwidth]{../../Commun/Images/python-cours-tutor-1}
 \end{center}
 
 \noindent Lorsqu'on écrit ensuite
@@ -1033,7 +1033,7 @@ In [13]: a = a + 1
 Python crée un nouvel objet de type \verb_int_ dont la valeur est 8 et associe le nom $a$ à ce nouvel objet.
 
 \begin{center}
-\includegraphics[width=0.25\textwidth]{../../commun/images/python-cours-tutor-2}
+\includegraphics[width=0.25\textwidth]{../../Commun/Images/python-cours-tutor-2}
 \end{center}
 \noindent
 L'ancien objet de valeur 7 existe toujours, mais plus aucune variable ne pointe vers lui. Lors du prochain passage
@@ -1054,13 +1054,13 @@ Lorsqu'on est à la ligne 5 et qu'on appelle la fonction $f$, l'objet de valeur 
 et une variable locale $n$ est créée.
 
 \begin{center}
-\includegraphics[width=0.25\textwidth]{../../commun/images/python-cours-tutor-4}
+\includegraphics[width=0.25\textwidth]{../../Commun/Images/python-cours-tutor-4}
 \end{center}
 \noindent
 L'instruction \verb!n = n + 1! de la ligne 2 crée un nouvel objet de valeur 6 vers lequel pointe la
 variable $n$.
 \begin{center}
-\includegraphics[width=0.25\textwidth]{../../commun/images/python-cours-tutor-5}
+\includegraphics[width=0.25\textwidth]{../../Commun/Images/python-cours-tutor-5}
 \end{center}
 \noindent
 Lorsqu'on sort de la fonction, la variable $n$ est détruite et $a$ pointe toujours vers un objet
@@ -1081,14 +1081,14 @@ Lorsqu'on est à la ligne 6 et qu'on appelle la fonction $g$, l'objet de valeur 
 à la fonction et une variable locale $t$ est créée. Nous nous trouvons donc dans la situation où deux variables
 pointent vers le même objet; ce phénomène est appelé \emph{aliasing}.
 \begin{center}
-\includegraphics[width=0.32\textwidth]{../../commun/images/python-cours-tutor-7}
+\includegraphics[width=0.32\textwidth]{../../Commun/Images/python-cours-tutor-7}
 \end{center}
 \noindent
 Contrairement à ce qui se passait dans le cas précédent où l'instruction \verb!n = n + 1! créait un nouvel
 objet, l'instruction \verb!t[k] = t[k] + 1! fait muter la liste $t$ et l'on se retrouve dans l'état
 suivant~:
 \begin{center}
-\includegraphics[width=0.32\textwidth]{../../commun/images/python-cours-tutor-8}
+\includegraphics[width=0.32\textwidth]{../../Commun/Images/python-cours-tutor-8}
 \end{center}
 \noindent Lorsqu'on va sortir de la fonction, la variable $t$ sera détruite et $a$ pointera toujours vers
 la liste qui a été modifiée par notre fonction.
@@ -1110,7 +1110,7 @@ t = [7, 2, 1]
 \end{pythoncode}
 \noindent ce sont en fait les objets suivants qui sont créés.
 \begin{center}
-\includegraphics[width=0.35\textwidth]{../../commun/images/python-cours-tutor-10}
+\includegraphics[width=0.35\textwidth]{../../Commun/Images/python-cours-tutor-10}
 \end{center}
 La représentation qui a été faite plus haut ne pose cependant aucun problème puisque les entiers sont
 des valeurs immuables. Cependant, une telle représentation devient cruciale lorsqu'on commence à manipuler
@@ -1122,7 +1122,7 @@ t.append(5)
 \end{pythoncode}
 \noindent Juste avant l'exécution de la ligne 3, voici les relations entre les différents objets.
 \begin{center}
-\includegraphics[width=0.39\textwidth]{../../commun/images/python-cours-tutor-12}
+\includegraphics[width=0.39\textwidth]{../../Commun/Images/python-cours-tutor-12}
 \end{center}
 Après ce script, $a$ va donc être associé à la valeur \verb![[7, 2, 1, 5], [7, 2, 1, 5]]!.
 \vspace{2ex}
@@ -1249,7 +1249,7 @@ d'attente. Les clients arrivent par la droite et la caisse est à gauche. Le pro
 servi étant celui qui attend depuis le plus longtemps.
 
 \begin{center}
-  \includegraphics[width=0.6\textwidth]{../../commun/images/python-cours-file}
+  \includegraphics[width=0.6\textwidth]{../../Commun/Images/python-cours-file}
   \end{center}
 
 % L'accession au poste de selectionneur

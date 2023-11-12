@@ -26,14 +26,14 @@ inférieur droit et $h$ la hauteur du bâtiment. La liste des bâtiments nous se
 liste de type \verb!list[tuple[int, int, int]]!. Par exemple, la figure 1, représente les bâtiments donnés
 par la liste \verb!bat = [(0, 5, 3), (1, 3, 2), (2, 4, 4), (6, 7, 2)]!.
 \begin{center}
-\includegraphics[width=0.5\textwidth]{../../commun/images/python-tp-horizon-1}\\
+\includegraphics[width=0.5\textwidth]{../../Commun/Images/python-tp-horizon-1}\\
 \textsc{Figure 1}
 \end{center}
 La ligne d'horizon est quant à elle donnée par la liste des points à chaque changement d'ordonnée~: on donne
 l'abscisse et l'ordonnée à droite du changement. Dans notre exemple, la ligne d'horizon visualisée sur
 la figure 2 sera représentée par \verb!hor = [(0, 3), (2, 4), (4, 3), (5, 0), (6, 2), (7, 0)]!.
 \begin{center}
-\includegraphics[width=0.5\textwidth]{../../commun/images/python-tp-horizon-2}\\
+\includegraphics[width=0.5\textwidth]{../../Commun/Images/python-tp-horizon-2}\\
 \textsc{Figure 2}
 \end{center}
 \begin{questions}
@@ -70,7 +70,7 @@ pour simplifier que les abscisses des bords des rectangles sont toujours distinc
   en argument deux lignes d'horizon et renvoie la ligne associée à l'union des deux lignes, comme sur la figure
   3. On souhaite une complexité linéaire en le nombre de points dans les deux lignes.
 \begin{center}
-\includegraphics[width=0.8\textwidth]{../../commun/images/python-tp-horizon-3}\\
+\includegraphics[width=0.8\textwidth]{../../Commun/Images/python-tp-horizon-3}\\
 \textsc{Figure 3} -- Fusion de deux lignes d'horizon.
 \end{center}
 \question Écrire une fonction \verb!ligne_horizon1(bat: list[tuple[int, int, int]]) -> list[tuple[int, int]]!
